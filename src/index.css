@@ -1,0 +1,77 @@
+@import "tailwindcss";
+
+:root {
+  font-family: poppins;
+  /* max-width: 1440px; */
+  height: 100vh;
+  margin: 0 auto;
+}
+
+a:active,
+a:focus {
+  /* color: red; */
+  /* text-decoration: underline; */
+  padding-bottom: 2px;
+  border-bottom: 1px solid gray;
+}
+
+.banner {
+  max-width: 1600px;
+  margin: 0 auto;
+}
+.flashsales {
+  max-width: 1440px;
+  margin: 0 auto;
+}
+.categories {
+  max-width: 1440px;
+  margin: 0 auto;
+}
+.bestProducts {
+  max-width: 1440px;
+  margin: 0 auto;
+}
+.ourProducts {
+  max-width: 1440px;
+  margin: 0 auto;
+}
+.newArrival {
+  max-width: 1440px;
+  margin: 0 auto;
+}
+.bannerTwo {
+  max-width: 1600px;
+  margin: 0 auto;
+}
+.ourStory {
+  max-width: 1440px;
+  margin: 0 auto;
+}
+.sellers {
+  max-width: 1440px;
+  margin: 0 auto;
+}
+.contact {
+  max-width: 1440px;
+  margin: 0 auto;
+}
+.signup {
+  max-width: 1440px;
+  margin: 0 auto;
+}
+.login {
+  max-width: 1440px;
+  margin: 0 auto;
+}
+.cart {
+  max-width: 1440px;
+  margin: 0 auto;
+}
+.billing {
+  max-width: 1440px;
+  margin: 0 auto;
+}
+.wishlists {
+  max-width: 1440px;
+  margin: 0 auto;
+}
