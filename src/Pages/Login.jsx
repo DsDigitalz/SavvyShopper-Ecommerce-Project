@@ -1,4 +1,5 @@
 import { useState } from "react";
+import toast from "react-hot-toast";
 import { useNavigate } from "react-router";
 
 export default function Login() {
@@ -8,17 +9,45 @@ export default function Login() {
     password: "",
   });
 
+  // show forgotten password
+  const [showForgottenPassword, setShowForgottenPassword] = useState(false);
+
+  function toggleShowForgottenPassword() {
+    setShowForgottenPassword((prevValue) => !prevValue);
+  }
+
   function handleRegister(e) {
     console.log(e);
     e.preventDefault();
-    console.log(formData);
+    // Fetching the registered information
+    const fetchedUserInfo = localStorage.getItem("userAccount");
+    console.log(fetchedUserInfo);
 
     if (!formData.email || !formData.password) {
       console.log("All fields required");
+      toast.error("Pls Provide a Valid Email and Password")
       return;
     }
 
-    localStorage.setItem("userAccount", JSON.stringify(formData));
+    // verification
+    if (
+      formData.email !== fetchedUserInfo.email &&
+      formData.password !== fetchedUserInfo.password
+    ) {
+      toast.error("Invalid Email or Password");
+      return;
+    }
+    // localStorage.setItem("userAccount", JSON.stringify(formData));
+    // toast.success('Login Successfully')
+    toast("Login Successfully", {
+      icon: "✅",
+      duration: 5000,
+      style: {
+        background: "black",
+        color: "white",
+        padding: "1rem",
+      },
+    });
     navigate("/home");
   }
 
@@ -54,7 +83,7 @@ export default function Login() {
             placeholder="Password"
             className="h-[40px] p-1 mb-3 border-b-1 border-zinc-400 outline-none"
             onChange={(e) =>
-              setFormData({ ...formData, email: e.target.value })
+              setFormData({ ...formData, password: e.target.value })
             }
           />
         </div>
@@ -67,6 +96,9 @@ export default function Login() {
           </p>
         </div>
       </form>
+      <button className="border" onClick={toggleShowForgottenPassword}>
+        Show forgotten password
+      </button>
     </div>
   );
 }

@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import toast from "react-hot-toast";
 // import iphone from "./Assets/iphone.png";
 // import googleIcon from "./Assets/IconGoogle.png";
 import { NavLink, useNavigate } from "react-router";
@@ -33,6 +34,7 @@ export default function SignUp() {
     localStorage.setItem("userAccount", JSON.stringify(formData));
 
     // Navigate to the login page
+    toast.success("Registered Successfully");
     navigate("/login");
   }
 

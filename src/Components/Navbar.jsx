@@ -28,7 +28,9 @@ function Navbar() {
 
       {/* // White navbar */}
       <nav className="flex justify-between mt-[40px] items-center border-b-1 border-zinc-300 pb-3 px-20">
-        <h1 className="text-[24px] font-bold">Exclusive</h1>
+        <h1 className="text-[24px] font-bold">
+          SavvySho<span className="text-red-500">pp</span>er
+        </h1>
         <ul className="flex text-[16px] gap-[48px] ">
           <li className="cursor-pointer hover:text-zinc-800 transition duration-300">
             <NavLink to="/home">Home </NavLink>

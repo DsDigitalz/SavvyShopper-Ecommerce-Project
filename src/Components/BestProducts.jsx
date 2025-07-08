@@ -35,7 +35,7 @@ const products = [
     category: "gaming",
   },
   {
-    id: 3,
+    id: 4,
     name: "Razer BlackWidow Keyboard",
     price: 150,
     originalPrice: 200,
@@ -46,7 +46,7 @@ const products = [
     category: "gaming",
   },
   {
-    id: 3,
+    id: 5,
     name: "Razer BlackWidow Keyboard",
     price: 150,
     originalPrice: 200,
@@ -57,7 +57,7 @@ const products = [
     category: "gaming",
   },
   {
-    id: 3,
+    id: 6,
     name: "Razer BlackWidow Keyboard",
     price: 150,
     originalPrice: 200,
@@ -68,7 +68,7 @@ const products = [
     category: "gaming",
   },
   {
-    id: 3,
+    id: 7,
     name: "Razer BlackWidow Keyboard",
     price: 150,
     originalPrice: 200,
@@ -79,7 +79,7 @@ const products = [
     category: "gaming",
   },
   {
-    id: 3,
+    id: 8,
     name: "Razer BlackWidow Keyboard",
     price: 150,
     originalPrice: 200,
@@ -90,7 +90,7 @@ const products = [
     category: "gaming",
   },
   {
-    id: 3,
+    id: 9,
     name: "Razer BlackWidow Keyboard",
     price: 150,
     originalPrice: 200,
@@ -101,7 +101,7 @@ const products = [
     category: "gaming",
   },
   {
-    id: 3,
+    id: 10,
     name: "Razer BlackWidow Keyboard",
     price: 150,
     originalPrice: 200,
@@ -112,7 +112,7 @@ const products = [
     category: "gaming",
   },
   {
-    id: 3,
+    id: 11,
     name: "Razer BlackWidow Keyboard",
     price: 150,
     originalPrice: 200,
@@ -123,7 +123,7 @@ const products = [
     category: "gaming",
   },
   {
-    id: 3,
+    id: 12,
     name: "Razer BlackWidow Keyboard",
     price: 150,
     originalPrice: 200,
@@ -134,7 +134,7 @@ const products = [
     category: "gaming",
   },
   {
-    id: 3,
+    id: 13,
     name: "Razer BlackWidow Keyboard",
     price: 150,
     originalPrice: 200,
@@ -145,7 +145,7 @@ const products = [
     category: "gaming",
   },
   {
-    id: 3,
+    id: 14,
     name: "Razer BlackWidow Keyboard",
     price: 150,
     originalPrice: 200,
@@ -156,7 +156,7 @@ const products = [
     category: "gaming",
   },
   {
-    id: 3,
+    id: 15,
     name: "Razer BlackWidow Keyboard",
     price: 150,
     originalPrice: 200,
@@ -187,8 +187,8 @@ export default function BestProducts() {
       </div>
       <div className="bg-white w-full p-[300px] mt-10 rounded ">
         <section className="gri grid-cols-5 justify-items-center gap-10">
-          {products.map(function(product){
-            return <BestProductsCard key={products.id} cardDetails={product}/>
+          {products.map(function (product) {
+            return <BestProductsCard key={product.id} cardDetails={product} />;
           })}
         </section>
       </div>
