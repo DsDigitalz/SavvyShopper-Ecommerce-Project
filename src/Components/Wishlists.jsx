@@ -17,7 +17,7 @@ const products = [
     price: 2200,
     originalPrice: 2800,
     discount: "-21%",
-    cartIcon: "path/to/cart-icon.png",
+    cartIcon: "path/to/cart-icon.png",                 
     deleteIcon: "path/to/delete-icon.png",
   },
   {

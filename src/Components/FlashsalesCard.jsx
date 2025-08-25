@@ -26,6 +26,7 @@ export default function FlashsalesCard({ cardDetails }) {
             </span>
           </p>
         </div>
+        
         <div className="flex items-center justify-center bg-red-500 text-white w-[55px] p-1 text-[12px] rounded absolute top-3 left-3">
           <p>{cardDetails.discount}</p>
         </div>

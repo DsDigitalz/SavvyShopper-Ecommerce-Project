@@ -4,7 +4,7 @@ import React from "react";
 import del from "./Assets/del.png";
 import cart from "./Assets/Cart1.png";
 
-export default function WishlistCard({cardDetails}) {
+export default function WishlistCard({ cardDetails }) {
   return (
     <div className=" bg-zinc-100 w-[200px] h-[322px] flex  flex-col shadow-lg rounded relative  hover:scale-102 transition duration-300">
       <div className="flex justify-center">
@@ -19,7 +19,11 @@ export default function WishlistCard({cardDetails}) {
 
       <div className="bg-white mt-auto h-[110px] flex flex-col gap-[8px] px-3">
         <p className="font-medium mt-[12px] text-[16px]">{cardDetails.name}</p>
-        <p className="text-red-500 flex gap-[12px] font-medium text-[16px]">{cardDetails.price} <span className="line-through text-zinc-400">{cardDetails.originalPrice}</span>
+        <p className="text-red-500 flex gap-[12px] font-medium text-[16px]">
+          {cardDetails.price}{" "}
+          <span className="line-through text-zinc-400">
+            {cardDetails.originalPrice}
+          </span>
         </p>
       </div>
       <div className="flex items-center justify-center bg-red-500 text-white w-[55px] p-1 text-[12px] rounded absolute top-3 left-3">

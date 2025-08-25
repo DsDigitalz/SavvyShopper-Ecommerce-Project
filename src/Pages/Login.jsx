@@ -10,11 +10,11 @@ export default function Login() {
   });
 
   // show forgotten password
-  const [showForgottenPassword, setShowForgottenPassword] = useState(false);
+  // const [showForgottenPassword, setShowForgottenPassword] = useState(false);
 
-  function toggleShowForgottenPassword() {
-    setShowForgottenPassword((prevValue) => !prevValue);
-  }
+  // function toggleShowForgottenPassword() {
+  //   setShowForgottenPassword((prevValue) => !prevValue);
+  // }
 
   function handleRegister(e) {
     console.log(e);
@@ -96,9 +96,9 @@ export default function Login() {
           </p>
         </div>
       </form>
-      <button className="border" onClick={toggleShowForgottenPassword}>
+      {/* <button className="border" onClick={toggleShowForgottenPassword}>
         Show forgotten password
-      </button>
+      </button> */}
     </div>
   );
 }
