@@ -30,7 +30,7 @@ const PageWrapper = ({ children }) => (
     exit={{ opacity: 0, y: -30 }}
     transition={{ duration: 0.6, ease: "easeInOut" }}
     className="w-full h-full"
-  > 
+  >
     {children}
   </motion.div>
 );
@@ -110,7 +110,7 @@ function AppRoutes() {
           }
         />
         <Route
-          path="/log_in"
+          path="/login"
           element={
             <PageWrapper>
               <Login />
