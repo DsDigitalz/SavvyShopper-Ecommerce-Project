@@ -57,7 +57,7 @@ export default function Navbar() {
           <li className="cursor-pointer hover:text-zinc-800 transition duration-300">
             <NavLink
               to="/home"
-              className={({ isActive }) => (isActive ? "font-bold" : "")}
+              className={({ isActive }) => (isActive ? "font-semibold" : "")}
             >
               Home
             </NavLink>
@@ -65,7 +65,7 @@ export default function Navbar() {
           <li className="cursor-pointer hover:text-zinc-800 transition duration-300">
             <NavLink
               to="/about"
-              className={({ isActive }) => (isActive ? "font-bold" : "")}
+              className={({ isActive }) => (isActive ? "font-semibold" : "")}
             >
               About
             </NavLink>
@@ -73,7 +73,7 @@ export default function Navbar() {
           <li className="cursor-pointer hover:text-zinc-800 transition duration-300">
             <NavLink
               to="/contact"
-              className={({ isActive }) => (isActive ? "font-bold" : "")}
+              className={({ isActive }) => (isActive ? "font-semibold" : "")}
             >
               Contact
             </NavLink>
@@ -91,11 +91,11 @@ export default function Navbar() {
         {/* Search, Icons & Mobile Menu Button */}
         <div className="flex items-center gap-4 sm:gap-6">
           {/* Search Bar (Hidden on small screens) */}
-          <div className="relative hidden md:block">
+          <div className="relative hidden lg:block">
             <input
               type="text"
               placeholder="What are you looking for?"
-              className="bg-zinc-100 p-2 sm:p-3 pr-10 text-sm border-none outline-none rounded focus:ring-2 focus:ring-red-500 w-40 lg:w-64"
+              className="bg-zinc-100 p-2 sm:p-3 pr-10 text-sm border-none outline-none rounded focus:ring-2 w-40 lg:w-64"
             />
             <img
               src={search}
@@ -124,7 +124,7 @@ export default function Navbar() {
               <img
                 src={user}
                 alt="User profile"
-                className="cursor-pointer w-6 h-6 rounded-full hover:ring-2 hover:ring-red-500 transition"
+                className="cursor-pointer w-6 h-6 rounded-full hover:opacity-75   transition"
               />
             </NavLink>
           </div>
@@ -151,7 +151,7 @@ export default function Navbar() {
             <input
               type="text"
               placeholder="What are you looking for?"
-              className="bg-zinc-100 p-2 pr-10 text-sm border-none outline-none rounded focus:ring-2 focus:ring-red-500 w-full"
+              className="bg-zinc-100 p-2 pr-10 text-sm border-none outline-none rounded   w-full"
             />
             <img
               src={search}
