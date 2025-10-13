@@ -75,3 +75,88 @@ a:focus {
   max-width: 1440px;
   margin: 0 auto;
 }
+
+/* Modal.css */
+
+/* Modal.css */
+
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7); /* Dark semi-transparent backdrop */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-container {
+  background-color: white;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+  position: relative;
+  max-width: 500px;
+  width: 90%;
+  /* Animation properties (optional, for smoother transitions with Framer Motion) */
+  opacity: 0; /* Initial opacity for fade-in */
+  transform: translateY(-20px); /* Initial position for slide-in */
+}
+
+.modal-title {
+  font-size: 18px;
+  /* margin-bottom: 20px; */
+  color: #333;
+}
+
+.modal-close-button {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: none;
+  border: none;
+  font-size: 28px;
+  cursor: pointer;
+  color: #777;
+  transition: color 0.3s ease;
+}
+
+.modal-close-button:hover {
+  color: #333;
+}
+
+/* Style the content inside the modal as needed */
+.modal-container > div {
+  /* Add padding or margins around the content if necessary */
+}
+
+/* Loader */
+
+.loader-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100%;
+}
+
+.spinner {
+  border: 4px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  border-top: 4px solid #fff;
+  width: 50px;
+  height: 50px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

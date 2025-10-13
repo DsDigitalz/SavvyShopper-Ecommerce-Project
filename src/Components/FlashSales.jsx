@@ -1,9 +1,9 @@
 import React from "react";
 import iconsArrowLeft from "./Assets/iconsArrowLeft.svg";
 import iconsArrowRight from "./Assets/iconsArrowRight.svg";
-import FlashsalesCard from "./FlashsalesCard";
-// import cart from "./Assets/Cart1.png";
+import FlashsalesCard from "./FlashsalesCard"; // Assuming correct component
 
+// --- Product Data ---
 const products = [
   {
     id: 1,
@@ -40,7 +40,7 @@ const products = [
   },
   {
     id: 4,
-    name: "S-Series Comfort Chair ",
+    name: "S-Series Comfort Chair",
     price: "$375",
     originalPrice: "$400",
     discount: "-25%",
@@ -49,7 +49,6 @@ const products = [
     eyeIcon: "/icons/eye.svg",
     category: "gaming",
   },
-
   {
     id: 5,
     name: "Logitech G502 Hero Mouse",
@@ -96,142 +95,169 @@ const products = [
   },
   {
     id: 9,
-    name: "HyperX Cloud II Gaming Headset",
-    price: "$100",
-    originalPrice: "$120",
-    discount: "-17%",
-    image: "./hyperx-cloud-ii.png",
+    name: "HyperX Cloud Alpha Headset",
+    price: "$99",
+    originalPrice: "$129",
+    discount: "-23%",
+    image: "./hyperx-headset.png",
     heartIcon: "/icons/heart.svg",
     eyeIcon: "/icons/eye.svg",
-    category: "gaming",
+    category: "audio",
   },
   {
     id: 10,
-    name: "SteelSeries Rival 600 Gaming Mouse",
-    price: "$90",
-    originalPrice: "$110",
-    discount: "-18%",
-    image: "./steelseries-rival-600.png",
+    name: "Samsung SSD 1TB 870 EVO",
+    price: "$79",
+    originalPrice: "$99",
+    discount: "-20%",
+    image: "./samsung-ssd.png",
     heartIcon: "/icons/heart.svg",
     eyeIcon: "/icons/eye.svg",
-    category: "gaming",
+    category: "storage",
   },
   {
     id: 11,
-    name: "BenQ ZOWIE XL2411P Gaming Monitor",
-    price: "$250",
-    originalPrice: "$300",
+    name: "Apple iPad Air (5th Gen)",
+    price: "$499",
+    originalPrice: "$599",
     discount: "-17%",
-    image: "./benq-zowie-xl2411p.png",
+    image: "./ipad-air.png",
     heartIcon: "/icons/heart.svg",
     eyeIcon: "/icons/eye.svg",
-    category: "gaming",
+    category: "tablet",
   },
   {
     id: 12,
-    name: "Turtle Beach Stealth 600 Headset",
-    price: "$120",
-    originalPrice: "$150",
-    discount: "-20%",
-    image: "./turtle-beach-stealth-600.png",
+    name: "DJI Mini 3 Pro Drone",
+    price: "$750",
+    originalPrice: "$900",
+    discount: "-16%",
+    image: "./dji-drone.png",
     heartIcon: "/icons/heart.svg",
     eyeIcon: "/icons/eye.svg",
-    category: "gaming",
+    category: "drone",
   },
   {
     id: 13,
-    name: "Acer Predator Helios 300 Laptop",
-    price: "$1200",
-    originalPrice: "$1400",
-    discount: "-14%",
-    image: "./acer-predator-helios-300.png",
+    name: "Google Pixel 8 Pro",
+    price: "$899",
+    originalPrice: "$999",
+    discount: "-10%",
+    image: "./pixel-8-pro.png",
     heartIcon: "/icons/heart.svg",
     eyeIcon: "/icons/eye.svg",
-    category: "gaming",
+    category: "mobile",
   },
   {
     id: 14,
-    name: "MSI Gaming Desktop PC",
-    price: "$1500",
-    originalPrice: "$1800",
+    name: "Bose QuietComfort Earbuds II",
+    price: "$249",
+    originalPrice: "$299",
     discount: "-17%",
-    image: "./msi-gaming-desktop.png",
+    image: "./bose-qc.png",
     heartIcon: "/icons/heart.svg",
     eyeIcon: "/icons/eye.svg",
-    category: "gaming",
+    category: "audio",
   },
   {
     id: 15,
-    name: "Razer Kraken X Lite Headset",
-    price: "$50",
-    originalPrice: "$70",
-    discount: "-29%",
-    image: "./razer-kraken-x-lite.png",
+    name: "Amazon Echo Show 10",
+    price: "$199",
+    originalPrice: "$249",
+    discount: "-20%",
+    image: "./echo-show.png",
     heartIcon: "/icons/heart.svg",
     eyeIcon: "/icons/eye.svg",
-    category: "gaming",
+    category: "smart-home",
   },
-  ,
 ];
 
+// --- Timer Unit ---
+const TimerUnit = ({ label, value }) => (
+  <div className="flex flex-col items-center">
+    <p className="font-semibold text-[10px] sm:text-[12px] text-gray-500">
+      {label}
+    </p>
+    <h1 className="text-xl sm:text-[32px] font-bold leading-none text-gray-900">
+      {value}
+    </h1>
+  </div>
+);
+
+// --- Main Component ---
 export default function FlashSales() {
+  const displayedProducts = products.slice(0, 16);
+
   return (
-    <section className="bg-zinc-100 flashsales rounded flex flex-col gap-[10px] px-20">
-      <div className="bg-white p-5 rounded flex items-center text-red-500 mt-20 gap-[10px]  font-semibold">
-        <div className="bg-red-500 w-[20px] h-[40px] rounded-[3px]"></div>
-        <div>
-          <p>Today's</p>
+    <section className="max-w-7xl mx-auto py-10 px-4 sm:px-6 lg:px-8">
+      {/* Section Header */}
+      <div className="flex items-center text-red-500 gap-2 mb-4">
+        <div className="bg-red-500 w-4 h-8 sm:w-5 sm:h-10 rounded-[3px]" />
+        <p className="font-semibold text-sm sm:text-base">Today's</p>
+      </div>
+
+      {/* Title + Timer + Arrows */}
+      <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between mb-8 sm:mb-10">
+        <div className="flex flex-col md:flex-row md:items-center gap-4 md:gap-10 w-full lg:w-auto">
+          <h2 className="text-2xl sm:text-3xl md:text-[36px] font-semibold text-gray-900 whitespace-nowrap">
+            Flash Sales
+          </h2>
+
+          <div className="flex items-center gap-2 sm:gap-4 justify-between w-full md:w-auto">
+            <TimerUnit label="Days" value="03" />
+            <span className="text-xl sm:text-3xl mt-3 text-red-500 font-bold">
+              :
+            </span>
+            <TimerUnit label="Hours" value="23" />
+            <span className="text-xl sm:text-3xl mt-3 text-red-500 font-bold">
+              :
+            </span>
+            <TimerUnit label="Minutes" value="19" />
+            <span className="hidden xs:flex text-xl sm:text-3xl mt-3 text-red-500 font-bold">
+              :
+            </span>
+            <div className="hidden xs:flex">
+              <TimerUnit label="Seconds" value="56" />
+            </div>
+          </div>
+        </div>
+
+        {/* Navigation Arrows */}
+        <div className="flex gap-2 mt-4 lg:mt-0 justify-end w-full lg:w-auto">
+          <button
+            aria-label="Previous products"
+            className="bg-zinc-100 hover:bg-zinc-200 transition rounded-full p-2 sm:p-3"
+          >
+            <img src={iconsArrowLeft} alt="Arrow Left" className="w-4 h-4" />
+          </button>
+          <button
+            aria-label="Next products"
+            className="bg-zinc-100 hover:bg-zinc-200 transition rounded-full p-2 sm:p-3"
+          >
+            <img src={iconsArrowRight} alt="Arrow Right" className="w-4 h-4" />
+          </button>
         </div>
       </div>
 
-      <div className="bg-white rounded p-5 flex items-center justify-between">
-        <h1 className="text-[36px] font-semibold">Flash Sales</h1>
-        <div className="flex items-center gap-[17px]">
-          <div className="flex flex-col">
-            <p className="font-semibold text-[12px]">Days</p>
-            <h1 className="text-[32px] font-bold">03</h1>
-          </div>
-          <div className="text-3xl mt-3 text-red-500">:</div>
-          <div className="flex flex-col">
-            <p className="font-semibold text-[12px]">Hours</p>
-            <h1 className="text-[32px] font-bold">23</h1>
-          </div>
-          <div className="text-3xl mt-3 text-red-500">:</div>
-          <div className="flex flex-col">
-            <p className="font-semibold text-[12px]">Minutes</p>
-            <h1 className="text-[32px] font-bold">19</h1>
-          </div>
-
-          <div className="text-3xl mt-3 text-red-500">:</div>
-          <div className="flex flex-col">
-            <p className="font-semibold text-[12px]">Seconds</p>
-            <h1 className="text-[32px] font-bold">56</h1>
-          </div>
-        </div>
-        <div className="flex gap-[10px]">
-          <img
-            src={iconsArrowLeft}
-            alt=""
-            className=" bg-zinc-100 rounded-full p-3"
-          />
-          <img
-            src={iconsArrowRight}
-            alt=""
-            className="bg-zinc-100 rounded-full p-3"
-          />
-        </div>
-        {/* Products */}
-      </div>
-      <div className="bg-white w-full p-10 mt-10">
-        <section className="grid grid-cols-5 gap-10 justify-items-center">
-          {products.map(function (product) {
-            return <FlashsalesCard key={product.id} cardDetails={product} />;
-          })}
+      {/* Product Cards */}
+      <div className="w-full overflow-x-auto pb-4 scroll-smooth">
+        <section className="flex lg:grid lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-6 justify-start">
+          {displayedProducts.map((product) => (
+            <div
+              key={product.id}
+              className="flex-shrink-0 w-[270px] lg:w-full snap-start"
+            >
+              <FlashsalesCard cardDetails={product} />
+            </div>
+          ))}
         </section>
       </div>
 
-      <div className="bg-red-500 rounded-[5px] w-[234px] h-[56px] text-white flex justify-center mx-auto mt-[60px]">
-        <button>View All Products</button>
+      {/* View All Button */}
+      <div className="w-full flex justify-center mt-8 sm:mt-12 border-t border-zinc-200 pt-8">
+        <button className="bg-red-500 hover:bg-red-600 transition rounded py-3 px-10 text-white font-medium text-base w-full max-w-sm">
+          View All Products
+        </button>
       </div>
     </section>
   );

@@ -1,6 +1,7 @@
 import React from "react";
 import iconsArrowLeft from "./Assets/iconsArrowLeft.svg";
 import iconsArrowRight from "./Assets/iconsArrowRight.svg";
+// Assuming these assets are correctly imported
 import cellphone from "./Assets/cellphone.png";
 import computer from "./Assets/computer.png";
 import smartwatch from "./Assets/smartwatch.png";
@@ -8,69 +9,82 @@ import camera from "./Assets/camera.png";
 import headphone from "./Assets/headphone.png";
 import gamepad from "./Assets/gamepad.png";
 
+// Category data for clean mapping
+const categoriesData = [
+  { name: "Phones", image: cellphone, active: false },
+  { name: "Computers", image: computer, active: false },
+  { name: "Smartwatch", image: smartwatch, active: false },
+  { name: "Camera", image: camera, active: true }, // The active/highlighted one
+  { name: "Headphone", image: headphone, active: false },
+  { name: "Gaming", image: gamepad, active: false },
+];
+
+// Reusable Category Card Component
+const CategoryCard = ({ name, image, active }) => {
+  const baseClasses =
+    "flex flex-col items-center justify-center p-4 border border-zinc-400 rounded-md transition duration-300 transform hover:scale-105 min-w-[120px] sm:min-w-[140px] md:min-w-0 h-[145px]";
+  const activeClasses = "bg-red-500 border-red-500 text-white shadow-lg";
+  const inactiveClasses =
+    "bg-white border-zinc-300 text-gray-800 hover:bg-red-50 hover:border-red-500";
+
+  return (
+    <div
+      className={
+        active
+          ? `${baseClasses} ${activeClasses}`
+          : `${baseClasses} ${inactiveClasses}`
+      }
+    >
+      <img src={image} alt={name} className="w-10 h-10 mb-4" />
+      <p className="text-sm font-medium">{name}</p>
+    </div>
+  );
+};
+
 export default function Categories() {
   return (
-    <section className="bg-zinc-100 categories flex flex-col gap-[10px] px-20">
-      <div className="bg-white rounded p-5 flex items-center text-red-500 mt-[140px] gap-[10px]  font-semibold">
-        <div className="bg-red-500 w-[20px] h-[40px] rounded-[3px]"></div>
-        <div>
-          <p>Categories</p>
+    // Semantic markup: <section> is the main container
+    <section className="max-w-7xl mx-auto py-10 px-4 sm:px-6 lg:px-8">
+      {/* 1. Section Header: "Categories" Tag */}
+      <div className="flex items-center text-red-500 gap-2 mb-4 mt-10 sm:mt-16">
+        <div className="bg-red-500 w-4 h-8 sm:w-5 sm:h-10 rounded-[3px]"></div>
+        <p className="font-semibold text-sm sm:text-base">Categories</p>
+      </div>
+
+      {/* 2. Title and Navigation Arrows */}
+      <div className="flex items-center justify-between border-b border-zinc-300 pb-5 mb-8">
+        <h2 className="text-2xl sm:text-3xl md:text-[36px] font-semibold text-gray-900 whitespace-nowrap">
+          Browse By Category
+        </h2>
+
+        {/* Navigation Arrows */}
+        <div className="flex gap-2">
+          <button
+            aria-label="Previous category"
+            className="bg-zinc-100 hover:bg-zinc-200 transition duration-300 rounded-full p-2 sm:p-3"
+          >
+            <img src={iconsArrowLeft} alt="Arrow Left" className="w-4 h-4" />
+          </button>
+          <button
+            aria-label="Next category"
+            className="bg-zinc-100 hover:bg-zinc-200 transition duration-300 rounded-full p-2 sm:p-3"
+          >
+            <img src={iconsArrowRight} alt="Arrow Right" className="w-4 h-4" />
+          </button>
         </div>
       </div>
 
-      <div className="bg-white p-5 rounded flex items-center justify-between">
-        <h1 className="text-[36px] font-semibold">Browse By Category</h1>
-
-        <div className="flex gap-[10px]">
-          <img
-            src={iconsArrowLeft}
-            alt=""
-            className=" bg-zinc-100 rounded-full p-3"
-          />
-          <img
-            src={iconsArrowRight}
-            alt=""
-            className="bg-zinc-100 rounded-full p-3"
-          />
-        </div>
-      </div>
-      {/* Icons */}
-      <div className="bg-white rounded flex items-center justify-between w-full p-20 mt-[60px] border-b-1 border-zinc-300 mb-[70px]">
-        <div className="flex justify-center border-1 border-zinc-400 w-[170px] h-[145px]">
-          <div className="mt-[25px] flex flex-col items-center gap-[16px]">
-            <img src={cellphone} alt="" />
-            <p>Phones</p>
-          </div>
-        </div>
-        <div className="flex justify-center border-1 border-zinc-400 w-[170px] h-[145px]">
-          <div className="mt-[25px] flex flex-col items-center gap-[16px]">
-            <img src={computer} alt="" />
-            <p>Computers</p>
-          </div>
-        </div>
-        <div className="flex justify-center border-1 border-zinc-400 w-[170px] h-[145px]">
-          <div className="mt-[25px] flex flex-col items-center gap-[16px]">
-            <img src={smartwatch} alt="" />
-            <p>Smartwatch</p>
-          </div>
-        </div>
-        <div className="flex justify-center bg-red-500 w-[170px] h-[145px]">
-          <div className="mt-[25px] flex flex-col items-center gap-[16px]">
-            <img src={camera} alt="" />
-            <p className="text-white">Camera</p>
-          </div>
-        </div>
-
-        <div className="flex justify-center border-1 border-zinc-400 w-[170px] h-[145px]">
-          <div className="mt-[25px] flex flex-col items-center gap-[16px]">
-            <img src={headphone} alt="" />
-            <p>Headphone</p>
-          </div>
-        </div>
-        <div className="flex justify-center border-1 border-zinc-400 w-[170px] h-[145px]">
-          <div className="mt-[25px] flex flex-col items-center gap-[16px]">
-            <img src={gamepad} alt="" />
-            <p>Gaming</p>
+      {/* 3. Category Icons Grid/Carousel */}
+      <div className="w-full pb-8">
+        {/* Mobile/Tablet: Horizontal scroll with fixed card size */}
+        <div className="flex overflow-x-scroll lg:overflow-x-hidden pb-4 space-x-4 lg:space-x-0 snap-x snap-mandatory scroll-smooth">
+          {/* Desktop/Large Screens: Switches to a proper grid layout */}
+          <div className="grid grid-flow-col lg:grid-cols-3 xl:grid-cols-6 gap-4 lg:gap-8 justify-start lg:justify-between w-full">
+            {categoriesData.map((category) => (
+              <div key={category.name} className="flex-shrink-0 snap-start">
+                <CategoryCard {...category} />
+              </div>
+            ))}
           </div>
         </div>
       </div>

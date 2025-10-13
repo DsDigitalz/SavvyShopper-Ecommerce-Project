@@ -1,8 +1,20 @@
-import React from "react";
+import React, { useState } from "react";
 import desktop from "./Assets/desktop.png";
 import game_pad from "./Assets/game_pad.png";
-import { NavLink } from "react-router";
+import { NavLink } from "react-router-dom"; // Use react-router-dom for NavLink
+import Modal from "./Modal"; // Import the Modal component
+
 export default function Cart_info() {
+  const [modalOpen, setModalOpen] = useState(false);
+
+  const handleOpenModal = () => {
+    setModalOpen(true);
+  };
+
+  const handleCloseModal = () => {
+    setModalOpen(false);
+  };
+
   return (
     <div className="cart bg-zinc-100">
       <section className="bg-white-[180px] px-20 py-20 my-20">
@@ -88,7 +100,10 @@ export default function Cart_info() {
               />
             </div>
             <div>
-              <button className="font-medium w-[218px] bg-red-500 text-white p-3 cursor-pointer rounded active:bg-red-600">
+              <button
+                className="font-medium w-[218px] bg-red-500 text-white p-3 cursor-pointer rounded active:bg-red-600"
+                onClick={handleOpenModal} // Add the onClick handler
+              >
                 Apply Coupon
               </button>
             </div>
@@ -118,6 +133,26 @@ export default function Cart_info() {
           </div>
         </div>
       </section>
+
+      {/* Conditionally render the modal */}
+      {modalOpen && (
+        <Modal handleClose={handleCloseModal} title="Apply Your Coupon">
+          <div className="flex flex-col items-center">
+            <h3>Enter a valid coupon code</h3>
+            <input
+              type="text"
+              placeholder="Coupon Code"
+              className="w-full p-2 border border-gray-300 rounded-md my-4 outline-none"
+            />
+            <button
+              onClick={handleCloseModal}
+              className="w-full p-3 bg-red-500 text-white rounded-md cursor-pointer active:bg-red-600"
+            >
+              Confirm
+            </button>
+          </div>
+        </Modal>
+      )}
     </div>
   );
 }

@@ -4,8 +4,8 @@ import scan from "./Assets/scan.png";
 import socials from "./Assets/socials.png";
 export default function Footer() {
   return (
-    <section className=" bg-black mt-[140px] py-15 flex flex-col justify-center">
-      <div className="flex gap-20 flex-wrap  text-white p-10 w-full justify-center">
+    <footer className=" bg-black mt-[70px] py-15 flex flex-col justify-center">
+      <div className="max-w-7xl mx-auto grid gap-20 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5  text-white p-10 w-full justify-center">
         <div>
           <div className="flex flex-col gap-[24px]">
             <h1 className="text-[24px] font-bold">Exclusive</h1>
@@ -58,6 +58,6 @@ export default function Footer() {
       <div className="mt-[76px] mx-auto text-zinc-400">
         <p>© Copyright Rimel 2022. All right reserved</p>
       </div>
-    </section>
+    </footer>
   );
 }

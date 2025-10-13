@@ -1,31 +1,62 @@
 import React from "react";
+// Assuming these assets are correctly imported or will be available
 import banner from "./Assets/banner.jpg";
 import rightArrow from "./Assets/rightArrow.svg";
+
 export default function Banner() {
+  // Category List data for cleaner rendering
+  const categories = [
+    { name: "Women's Fashion", hasArrow: true },
+    { name: "Men's Fashion", hasArrow: true },
+    { name: "Electronics", hasArrow: false },
+    { name: "Home & Lifestyle", hasArrow: false },
+    { name: "Medicine", hasArrow: false },
+    { name: "Sports & Outdoor", hasArrow: false },
+    { name: "Groceries & Pets", hasArrow: false },
+    { name: "Health & Beauty", hasArrow: false },
+  ];
+
   return (
-    <div className="banner">
-      <div className=" w-[100%] flex pb-10 justify-between items-center">
-        {/* Aside section */}
-        <div className="w-[30%] border-r-1 border-zinc-300 py-3">
-          <div className=" flex flex-col gap-[18px] mt-[40px] pl-20 py-10">
-            <p className="flex gap-[51px]">
-              Women's Fashion <img src={rightArrow} alt="" />
-            </p>
-            <p className="flex gap-[80px]">
-              Men's Fashion <img src={rightArrow} alt="" />
-            </p>
-            <p>Electronics</p>
-            <p>Home & Lifestyle</p>
-            <p>Medicine</p>
-            <p>Sports & Outdoor</p>
-            <p>Groceries & Pets</p>
-            <p> Health & Beauty</p>
-          </div>
-        </div>
-        <div className="mt-[35px] w-full px-9 pr-20">
-          <img src={banner} alt="" className="w-full" />
+    // Use <section> for semantic markup
+    <section className="banner  py-5 sm:py-8 lg:py-10 px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl  mx-auto flex w-full">
+        {/* Aside section - Categories (Visible on large screens, hidden on others) */}
+        <aside className="hidden lg:block w-1/4 xl:w-[25%] pr-10 border-r border-zinc-300">
+          <ul className="flex flex-col gap-4 text-sm xl:text-base pt-4">
+            {categories.map((category, index) => (
+              <li
+                key={index}
+                className="hover:text-red-500 transition duration-300 cursor-pointer flex justify-between items-center"
+              >
+                {category.name}
+                {category.hasArrow && (
+                  // Adjusted gap and alignment for better control
+                  <img src={rightArrow} alt="Right arrow" className="w-4 h-4" />
+                )}
+              </li>
+            ))}
+          </ul>
+        </aside>
+
+        {/* Main Banner Content - Takes full width on small screens, remaining width on large screens */}
+        <div className="w-full lg:w-3/4 xl:w-[75%] lg:pl-10">
+          <article className="flex flex-col justify-center items-start h-full">
+            {/* The banner image container */}
+            <div className="w-full">
+              <img
+                src={banner}
+                alt="Promotional Banner"
+                className="w-full object-cover rounded-lg shadow-lg"
+              />
+            </div>
+
+            {/* Optional: Add a mobile-friendly title/description for the banner if needed */}
+            <div className="lg:hidden mt-4 text-center w-full">
+              <h2 className="text-xl font-semibold">Latest Deals & Offers</h2>
+            </div>
+          </article>
         </div>
       </div>
-    </div>
+    </section>
   );
 }

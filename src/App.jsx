@@ -1,4 +1,3 @@
-// App.jsx
 import React from "react";
 import {
   BrowserRouter,
@@ -7,8 +6,8 @@ import {
   Routes,
   useLocation,
 } from "react-router-dom";
-import { AnimatePresence, motion } from "framer-motion";
 
+import Navbar from "./Components/Navbar";
 import Home from "./Pages/Home";
 import About from "./Pages/About";
 import Contact from "./Pages/Contact";
@@ -21,28 +20,42 @@ import Cart from "./Pages/Cart";
 import Likes from "./Pages/Likes";
 import Checkout from "./Pages/Checkout";
 import { Toaster } from "react-hot-toast";
+import DashboardPage from "./Pages/DashboardPage";
 
-// 👇 Animation wrapper here
+// The PageWrapper component is no longer needed since animation is removed,
+// but we'll use a simple Fragment or Div to wrap the content for structure.
 const PageWrapper = ({ children }) => (
-  <motion.div
-    initial={{ opacity: 0, y: 30 }}
-    animate={{ opacity: 1, y: 0 }}
-    exit={{ opacity: 0, y: -30 }}
-    transition={{ duration: 0.6, ease: "easeInOut" }}
-    className="w-full h-full"
-  >
-    {children}
-  </motion.div>
+  <div className="w-full h-full">{children}</div>
 );
+
+// Define an array of paths that should have the Navbar
+const pathsWithNavbar = [
+  "/",
+  "/home",
+  "/about",
+  "/contact",
+  "/edit_profile",
+  "/cart",
+  "/likes",
+  "/checkout",
+  "/dashboard",
+];
 
 function AppRoutes() {
   const location = useLocation();
 
+  // Check if the current path is in our list of paths that should have a Navbar
+  const showNavbar = pathsWithNavbar.includes(location.pathname);
+
+  // AnimatePresence is removed. The Routes component handles rendering.
   return (
-    <AnimatePresence mode="wait">
+    <>
+      {showNavbar && <Navbar />}
       <Routes location={location} key={location.pathname}>
         <Route element={<AppLayout />}>
           <Route index element={<Navigate replace to="/home" />} />
+
+          {/* Routes that use AppLayout (typically includes a footer/global elements) */}
           <Route
             path="/home"
             element={
@@ -99,8 +112,17 @@ function AppRoutes() {
               </PageWrapper>
             }
           />
+          <Route
+            path="/dashboard"
+            element={
+              <PageWrapper>
+                <DashboardPage />
+              </PageWrapper>
+            }
+          />
         </Route>
 
+        {/* Routes that do NOT use AppLayout (e.g., full-page forms) */}
         <Route
           path="/sign_up"
           element={
@@ -117,6 +139,8 @@ function AppRoutes() {
             </PageWrapper>
           }
         />
+
+        {/* Catch-all route */}
         <Route
           path="*"
           element={
@@ -126,7 +150,7 @@ function AppRoutes() {
           }
         />
       </Routes>
-    </AnimatePresence>
+    </>
   );
 }
 
@@ -136,7 +160,7 @@ const App = () => {
       <BrowserRouter>
         <AppRoutes />
       </BrowserRouter>
-      <Toaster position="top right" reverseOrder={false} />
+      <Toaster position="top-right" reverseOrder={false} />
     </>
   );
 };
