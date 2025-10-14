@@ -1,112 +1,104 @@
-  import React, { useState } from "react";
-  import iconsphone from "./Assets/icons-phone.png";
-  import iconsmail from "./Assets/icons-mail.png";
-  import Modal from "./Modal"; // Make sure to import the Modal component
+import React, { useState } from "react";
+import iconsphone from "./Assets/icons-phone.png";
+import iconsmail from "./Assets/icons-mail.png";
+import Modal from "./Modal";
 
-  export default function Con_tact() {
-    const [modalOpen, setModalOpen] = useState(false);
+export default function Con_tact() {
+  const [modalOpen, setModalOpen] = useState(false);
 
-    const handleOpenModal = () => {
-      setModalOpen(true);
-    };
+  const handleOpenModal = () => setModalOpen(true);
+  const handleCloseModal = () => setModalOpen(false);
 
-    const handleCloseModal = () => {
-      setModalOpen(false);
-    };
-
-    return (
-      <>
-        <section className="contact flex pt-[200px] px-20 gap-[36px]">
-          <div className="border-zinc-100 border-1 shadow-lg w-[340px] p-10">
-            <div className="border-zinc-400 border-b-1 w-[280px]">
-              <div className="flex items-center gap-[16px] font-medium mb-[32px]">
-                <img src={iconsphone} alt="" />
-                <h1>Call To Us</h1>
-              </div>
-              <div>
-                <p className="text-[14px] mb-[16px]">
-                  We are available 24/7, 7 days a week.{" "}
-                </p>
-                <p className="text-[14px] mb-[32px]">Phone: +8801611112222</p>
-              </div>
+  return (
+    <>
+      <section className="contact flex flex-col lg:flex-row items-start justify-center pt-20 lg:pt-40 px-6 sm:px-10 lg:px-20 gap-10">
+        {/* LEFT CONTACT CARD */}
+        <div className="border border-zinc-200 shadow-lg w-full lg:w-[340px] p-6 sm:p-8 rounded-lg bg-white">
+          <div className="border-b border-zinc-300 pb-6 mb-6">
+            <div className="flex items-center gap-4 font-medium mb-4">
+              <img src={iconsphone} alt="phone" className="w-6 h-6" />
+              <h1 className="text-lg font-semibold">Call To Us</h1>
             </div>
-            <div className="mt-[32px]">
-              <div className="flex items-center gap-[16px] font-medium mb-[32px]">
-                <img src={iconsmail} alt="" />
-                <h1>Write To Us</h1>
-              </div>
-              <div>
-                <p className="text-[14px] mb-[16px]">
-                  Fill out our form and we will contact you within 24 hours.
-                </p>
-                <p className="text-[14px] mb-[16px]">
-                  Emails: customer@exclusive.com
-                </p>
-                <p className="text-[14px]">Emails: support@exclusive.com</p>
-              </div>
+            <p className="text-sm mb-2">
+              We are available 24/7, 7 days a week.
+            </p>
+            <p className="text-sm font-medium">Phone: +8801611112222</p>
+          </div>
+
+          <div>
+            <div className="flex items-center gap-4 font-medium mb-4">
+              <img src={iconsmail} alt="mail" className="w-6 h-6" />
+              <h1 className="text-lg font-semibold">Write To Us</h1>
+            </div>
+            <p className="text-sm mb-2">
+              Fill out our form and we will contact you within 24 hours.
+            </p>
+            <p className="text-sm">Emails: customer@exclusive.com</p>
+            <p className="text-sm">Emails: support@exclusive.com</p>
+          </div>
+        </div>
+
+        {/* RIGHT CONTACT FORM */}
+        <div className="flex flex-col gap-6 border border-zinc-200 shadow-lg w-full p-6 sm:p-10 rounded-lg bg-white">
+          {/* Input group */}
+          <div className="flex flex-col sm:flex-row flex-wrap gap-4">
+            <div className="bg-zinc-100 flex-1 min-w-[200px] p-3 rounded-md">
+              <input
+                type="text"
+                name="fullname"
+                placeholder="Your Name"
+                className="w-full bg-transparent outline-none text-sm"
+              />
+            </div>
+            <div className="bg-zinc-100 flex-1 min-w-[200px] p-3 rounded-md">
+              <input
+                type="email"
+                name="email"
+                placeholder="Your Email"
+                className="w-full bg-transparent outline-none text-sm"
+              />
+            </div>
+            <div className="bg-zinc-100 flex-1 min-w-[200px] p-3 rounded-md">
+              <input
+                type="text"
+                name="phone"
+                placeholder="Your Phone No"
+                className="w-full bg-transparent outline-none text-sm"
+              />
             </div>
           </div>
-          <div className="flex flex-col gap-[32px] border-zinc-100 border-1 shadow-lg w-[100%] p-10">
-            <div className="flex gap-[16px] h-12 mx-auto">
-              <div className="bg-zinc-100 w-[235px] p-3">
-                <input
-                  type="text"
-                  name="fullname"
-                  id=""
-                  placeholder="Your Name"
-                  className="outline-none"
-                />
-              </div>
-              <div className="bg-zinc-100 w-[235px] p-3">
-                <input
-                  type="text"
-                  name="email"
-                  id="email"
-                  placeholder="Your Email"
-                  className="outline-none"
-                />
-              </div>
-              <div className="bg-zinc-100 w-[235px] p-3">
-                <input
-                  type="text"
-                  name="phone no"
-                  id="phone no"
-                  placeholder="Your Phone No"
-                  className="outline-none"
-                />
-              </div>
-            </div>
-            <div className="bg-zinc-100 w-[737px] h-[207px] p-3 mx-auto">
-              <textarea
-                name="message"
-                id="message"
-                placeholder="Your Message"
-                className="w-full h-full outline-none"
-              ></textarea>
-            </div>
 
-            <button
-              className="bg-red-500 text-white p-3 w-[20%] mx-auto cursor-pointer active:bg-red-600"
-              onClick={handleOpenModal} // Add the onClick handler
-            >
-              Send Message
-            </button>
+          {/* Textarea */}
+          <div className="bg-zinc-100 p-3 rounded-md w-full">
+            <textarea
+              name="message"
+              placeholder="Your Message"
+              className="w-full h-40 sm:h-52 bg-transparent outline-none text-sm resize-none"
+            ></textarea>
           </div>
-        </section>
 
-        {/* Conditionally render the modal */}
-        {modalOpen && (
-          <Modal handleClose={handleCloseModal}>
-            <div className="modal-title">
-              <h2 className="text-xl">Thank You!</h2>
-              <p>
-                Your message has been sent successfully. We will get back to you
-                shortly.
-              </p>
-              {/* <button className="modal-close-button" onClick={handleCloseModal}>Close</button> */}
-            </div>
-          </Modal>
-        )}
-      </>
-    );
-  }
+          {/* Button */}
+          <button
+            className="bg-red-500 text-white px-6 py-3 rounded-md w-full sm:w-1/3 md:w-1/4 mx-auto active:bg-red-600 transition-all"
+            onClick={handleOpenModal}
+          >
+            Send Message
+          </button>
+        </div>
+      </section>
+
+      {/* Modal */}
+      {modalOpen && (
+        <Modal handleClose={handleCloseModal}>
+          <div className="text-center space-y-2">
+            <h2 className="text-xl font-semibold">Thank You!</h2>
+            <p className="text-sm text-gray-600">
+              Your message has been sent successfully. We’ll get back to you
+              shortly.
+            </p>
+          </div>
+        </Modal>
+      )}
+    </>
+  );
+}

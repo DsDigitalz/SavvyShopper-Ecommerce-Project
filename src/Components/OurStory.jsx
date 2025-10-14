@@ -4,8 +4,8 @@ import girls from "./Assets/girls.png";
 export default function OurStory() {
   return (
   
-      <section className="ourStory flex items-center px-20 gap-[75px] pt-[100px]">
-        <div className="w-[525px]">
+      <section className="ourStory flex flex-col  justify-center lg:flex-row items-center px-4 lg:px-20 gap-[75px] pt-20 lg:pt-[100px]">
+        <div className="flex-1 text-center lg:text-left">
           <h1 className="text-[54px] mb-[40px] font-semibold">Our Story</h1>
           <p className="mb-[24px]">
             Launced in 2015, Exclusive is South Asia’s premier online shopping
@@ -20,7 +20,7 @@ export default function OurStory() {
             ranging from consumer.
           </p>
         </div>
-        <div>
+        <div className="flex-1">
           <img src={girls} alt="" />
         </div>
       </section>

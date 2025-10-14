@@ -239,12 +239,12 @@ const products = [
 
 export default function Wishlists() {
   return (
-    <div className="wishlist pt-[56px] text-[20px] px-20">
+    <div className="wishlist pt-[56px] text-[20px] px-4 lg:px-20">
       <div className="wishlists">
         <h1 className="mb-[80px]">Wishlist</h1>
       </div>
-      <div className="wishlists p-10  bg-zinc-100 rounded ">
-        <section className=" bg-white  p-10 rounded grid grid-cols-6 gap-10 justify-items-center">
+      <div className="wishlists lg:p-10  bg-zinc-100 rounded ">
+        <section className=" bg-white  lg:p-10 rounded grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-10 justify-items-center">
           {products.map(function (product) {
             return <WishlistCard cardDetails={product} />;
           })}

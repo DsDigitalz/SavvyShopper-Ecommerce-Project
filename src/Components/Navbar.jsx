@@ -16,7 +16,7 @@ export default function Navbar() {
   return (
     <header className="w-full shadow-md z-50">
       {/* Black Top Bar */}
-      <nav className="bg-black text-gray-300 flex justify-center items-center py-1 sm:px-10">
+      <nav className="bg-black text-gray-300 flex justify-center items-center py-2 sm:px-10">
         <p className="text-start text-[12px]   sm:text-center  w-70 sm:w-full sm:py-3">
           Summer Sale For All Swim Suits And Free Express Delivery - OFF 50%!
           <Link
@@ -43,7 +43,7 @@ export default function Navbar() {
       <hr />
 
       {/* Main White Navbar */}
-      <nav className="flex justify-between items-center py-4 px-4 sm:px-6 lg:px-10 max-w-full mx-auto">
+      <nav className="flex justify-between items-center py-5 px-4 sm:px-6 lg:px-10 max-w-full mx-auto">
         {/* Logo and Brand Name */}
         <div className="flex items-center gap-2">
           <FaBabyCarriage className="text-red-500 text-2xl sm:text-3xl" />

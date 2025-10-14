@@ -2,207 +2,139 @@ import React, { useState } from "react";
 import desktop from "./Assets/desktop.png";
 import game_pad from "./Assets/game_pad.png";
 import bankcard from "./Assets/bankcard.png";
-import Modal from "./Modal"; // Import the Modal component
+import Modal from "./Modal";
 
 export default function BillingDetails() {
   const [couponModalOpen, setCouponModalOpen] = useState(false);
   const [orderModalOpen, setOrderModalOpen] = useState(false);
 
-  // Handlers for the "Apply Coupon" modal
-  const handleOpenCouponModal = () => {
-    setCouponModalOpen(true);
-  };
-  const handleCloseCouponModal = () => {
-    setCouponModalOpen(false);
-  };
-
-  // Handlers for the "Place Order" modal
-  const handleOpenOrderModal = () => {
-    setOrderModalOpen(true);
-  };
-  const handleCloseOrderModal = () => {
-    setOrderModalOpen(false);
-  };
-
   return (
     <>
-      <section className="billing my-[150px] p-20 flex justify-between">
-        <div>
-          <h1 className="mb-[48px] text-[36px]">Billing Details</h1>
-          <div className="flex flex-col gap-[32px]">
-            <div className="flex flex-col gap-[8px]">
-              <label htmlFor="firstName" className="text-zinc-400">
-                First Name <span className="text-red-500">*</span>
-              </label>
-              <input
-                type="text"
-                name="firstName"
-                id="firstName"
-                className="w-[470px] p-3 bg-zinc-100 outline-none"
-              />
-            </div>
-            <div className="flex flex-col gap-[8px]">
-              <label htmlFor="companyName" className="text-zinc-400">
-                Company Name <span className="text-red-500">*</span>
-              </label>
-              <input
-                type="text"
-                name="companyName"
-                id="companyName"
-                className="w-[470px] p-3 bg-zinc-100 outline-none"
-              />
-            </div>
-            <div className="flex flex-col gap-[8px]">
-              <label htmlFor="streetAddress" className="text-zinc-400">
-                Street Address <span className="text-red-500">*</span>
-              </label>
-              <input
-                type="text"
-                name="streetAddress"
-                id="streetAddress"
-                className="w-[470px] p-3 bg-zinc-100 outline-none"
-              />
-            </div>
-            <div className="flex flex-col gap-[8px]">
-              <label htmlFor="apartment" className="text-zinc-400">
-                Apartment, floor, etc. (optional){" "}
-                <span className="text-red-500">*</span>
-              </label>
-              <input
-                type="text"
-                name="apartment"
-                id="apartment"
-                className="w-[470px] p-3 bg-zinc-100 outline-none"
-              />
-            </div>
-            <div className="flex flex-col gap-[8px]">
-              <label htmlFor="town_city" className="text-zinc-400">
-                Town/City<span className="text-red-500">*</span>
-              </label>
-              <input
-                type="text"
-                name="town_city"
-                id="town_city"
-                className="w-[470px] p-3 bg-zinc-100 outline-none"
-              />
-            </div>
-            <div className="flex flex-col gap-[8px]">
-              <label htmlFor="PhoneNumber" className="text-zinc-400">
-                Phone Number<span className="text-red-500">*</span>
-              </label>
-              <input
-                type="text"
-                name="PhoneNumber"
-                id="PhoneNumber"
-                className="w-[470px] p-3 bg-zinc-100 outline-none"
-              />
-            </div>
-            <div className="flex flex-col gap-[8px]">
-              <label htmlFor="emailAddress" className="text-zinc-400">
-                Email Address<span className="text-red-500">*</span>
-              </label>
-              <input
-                type="email"
-                name="emailAddress"
-                id="emailAddress"
-                className="w-[470px] p-3 bg-zinc-100 outline-none"
-              />
-            </div>
+      <section className="billing pt-30 my-20 px-6 md:px-12 lg:px-20 flex flex-col lg:flex-row justify-between gap-12 lg:gap-24">
+        {/* LEFT SIDE: BILLING FORM */}
+        <div className="flex-1">
+          <h1 className="mb-10 text-2xl md:text-3xl font-semibold">
+            Billing Details
+          </h1>
+
+          <div className="flex   flex-col gap-6">
+            {[
+              { id: "firstName", label: "First Name" },
+              { id: "companyName", label: "Company Name" },
+              { id: "streetAddress", label: "Street Address" },
+              { id: "apartment", label: "Apartment, floor, etc. (optional)" },
+              { id: "town_city", label: "Town/City" },
+              { id: "PhoneNumber", label: "Phone Number" },
+              { id: "emailAddress", label: "Email Address" },
+            ].map(({ id, label }) => (
+              <div key={id} className="flex flex-col gap-2">
+                <label htmlFor={id} className="text-zinc-500 text-sm">
+                  {label} <span className="text-red-500">*</span>
+                </label>
+                <input
+                  type="text"
+                  id={id}
+                  className="w-full  p-3 bg-zinc-100 outline-none rounded"
+                />
+              </div>
+            ))}
           </div>
 
-          <div className="flex items-center gap-3 mt-[24px]">
-            <input
-              type="checkbox"
-              name="checkbox"
-              id="checkbox"
-              className="bg-black"
-            />
-            <label>Save this information for faster check-out next time</label>
+          <div className="flex items-start gap-3 mt-6">
+            <input type="checkbox" id="checkbox" className="mt-1" />
+            <label htmlFor="checkbox" className="text-sm md:text-base">
+              Save this information for faster check-out next time
+            </label>
           </div>
         </div>
 
-        <div className="flex flex-col items-center">
-          <div className="flex items-center justify-between mt-25  p-5  w-[527px] h-[100px]">
-            <div className="flex items-center gap-3">
-              <img src={desktop} alt="" />
-              <p>LCD Monitor</p>
-            </div>
-            <div>
-              <p>$650</p>
-            </div>
+        {/* RIGHT SIDE: ORDER SUMMARY */}
+        <div className="flex-1 flex flex-col items-center lg:items-start">
+          {/* Product List */}
+          <div className="w-full max-w-[527px] space-y-4">
+            {[
+              { img: desktop, name: "LCD Monitor", price: "$650" },
+              { img: game_pad, name: "H1 Gamepad", price: "$550" },
+            ].map((item, index) => (
+              <div
+                key={index}
+                className="flex items-center justify-between border-b border-zinc-200 pb-4"
+              >
+                <div className="flex items-center gap-3">
+                  <img
+                    src={item.img}
+                    alt={item.name}
+                    className="w-10 h-10 object-contain"
+                  />
+                  <p>{item.name}</p>
+                </div>
+                <p className="font-medium">{item.price}</p>
+              </div>
+            ))}
           </div>
 
-          <div className="flex items-center justify-between p-5  w-[527px] h-[100px]">
-            <div className="flex items-center gap-3">
-              <img src={game_pad} alt="" />
-              <p>H1 Gamepad</p>
-            </div>
-            <div>
-              <p>$550</p>
-            </div>
-          </div>
-          <div className="w-full px-5 flex flex-col gap-[10px] mt-4">
-            <div className="border-b-1 border-zinc-400 flex justify-between pb-3">
+          {/* Summary */}
+          <div className="w-full max-w-[527px] px-2 mt-6 space-y-3 text-sm md:text-base">
+            <div className="flex justify-between border-b border-zinc-300 pb-2">
               <p>Subtotal:</p>
               <p>$1750</p>
             </div>
-            <div className="border-b-1 border-zinc-400 flex justify-between pb-3">
-              <p>Shipping</p>
+            <div className="flex justify-between border-b border-zinc-300 pb-2">
+              <p>Shipping:</p>
               <p>Free</p>
             </div>
-            <div className="flex justify-between pb-3">
-              <p>Total</p>
-              <p>$1750</p>
+            <div className="flex justify-between">
+              <p>Total:</p>
+              <p className="font-semibold">$1750</p>
             </div>
           </div>
-          <div className="flex items-center justify-between mt-[32px] w-full px-5">
-            <div className="flex items-center gap-[12px] ">
-              <input type="radio" name="bank" id="bank" />
-              <label htmlFor="bank">Bank</label>
+
+          {/* Payment Options */}
+          <div className="w-full max-w-[527px] mt-8 space-y-4">
+            <div className="flex items-center justify-between">
+              <label className="flex items-center gap-3 cursor-pointer">
+                <input type="radio" name="payment" />
+                <span>Bank</span>
+              </label>
+              <img src={bankcard} alt="Bank Card" className="w-12 md:w-16" />
             </div>
-            <div>
-              <img src={bankcard} alt="" />
-            </div>
+
+            <label className="flex items-center gap-3 cursor-pointer">
+              <input type="radio" name="payment" />
+              <span>Cash on Delivery</span>
+            </label>
           </div>
-          <div className="flex items-center gap-[12px] w-full px-5 mt-[32px]">
-            <input type="radio" name="bank" id="bank" />
-            <label htmlFor="bank">Cash on delivery</label>
+
+          {/* Coupon + Order Buttons */}
+          <div className="w-full max-w-[527px] mt-8 flex flex-col sm:flex-row gap-4">
+            <input
+              type="text"
+              placeholder="Coupon Code"
+              className="flex-1 p-3 border border-zinc-300 rounded outline-none"
+            />
+            <button
+              onClick={() => setCouponModalOpen(true)}
+              className="w-full sm:w-[200px] bg-red-500 text-white p-3 rounded font-medium active:bg-red-600"
+            >
+              Apply Coupon
+            </button>
           </div>
-          <div className="flex gap-[16px] mt-[32px]">
-            <div>
-              <input
-                type="text"
-                name="coupon_code"
-                id="coupon_code"
-                className="w-[300px] p-3 border-1 border-zinc-300 rounded outline-none"
-                placeholder="Coupon Code"
-              />
-            </div>
-            <div>
-              <button
-                className="font-medium w-[218px] bg-red-500 text-white p-3 cursor-pointer rounded active:bg-red-600"
-                onClick={handleOpenCouponModal}
-              >
-                Apply Coupon
-              </button>
-            </div>
-          </div>
-          <div className="flex mr-auto">
-            <div>
-              <button
-                className="font-medium w-[218px] mt-[32px] bg-red-500 text-white p-3 cursor-pointer rounded active:bg-red-600"
-                onClick={handleOpenOrderModal} // New handler for this button
-              >
-                Place Order
-              </button>
-            </div>
-          </div>
+
+          <button
+            onClick={() => setOrderModalOpen(true)}
+            className="mt-6 w-full max-w-[527px] bg-red-500 text-white p-3 rounded font-medium active:bg-red-600"
+          >
+            Place Order
+          </button>
         </div>
       </section>
 
-      {/* Conditionally render the "Apply Coupon" modal */}
+      {/* Coupon Modal */}
       {couponModalOpen && (
-        <Modal handleClose={handleCloseCouponModal} title="Apply Your Coupon">
+        <Modal
+          handleClose={() => setCouponModalOpen(false)}
+          title="Apply Your Coupon"
+        >
           <div className="flex flex-col items-center">
             <h3>Enter a valid coupon code</h3>
             <input
@@ -211,7 +143,7 @@ export default function BillingDetails() {
               className="w-full p-2 border border-gray-300 rounded-md my-4 outline-none"
             />
             <button
-              onClick={handleCloseCouponModal}
+              onClick={() => setCouponModalOpen(false)}
               className="w-full p-3 bg-red-500 text-white rounded-md cursor-pointer active:bg-red-600"
             >
               Confirm
@@ -220,14 +152,20 @@ export default function BillingDetails() {
         </Modal>
       )}
 
-      {/* Conditionally render the "Place Order" modal */}
+      {/* Order Modal */}
       {orderModalOpen && (
-        <Modal handleClose={handleCloseOrderModal} title="Order Placed!">
+        <Modal
+          handleClose={() => setOrderModalOpen(false)}
+          title="Order Placed!"
+        >
           <div className="flex flex-col items-center text-center">
             <h3>Thank you for your purchase!</h3>
-            <p className="my-4">Your order has been placed successfully and will be processed shortly. You will receive an email confirmation soon.</p>
+            <p className="my-4">
+              Your order has been placed successfully and will be processed
+              shortly. You’ll receive an email confirmation soon.
+            </p>
             <button
-              onClick={handleCloseOrderModal}
+              onClick={() => setOrderModalOpen(false)}
               className="w-full p-3 bg-red-500 text-white rounded-md cursor-pointer active:bg-red-600"
             >
               Continue Shopping

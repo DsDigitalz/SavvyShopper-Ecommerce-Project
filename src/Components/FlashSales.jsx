@@ -197,7 +197,7 @@ export default function FlashSales() {
       </div>
 
       {/* Title + Timer + Arrows */}
-      <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between mb-8 sm:mb-10">
+      <div className="flex flex-col justify-center items-center lg:flex-row lg:items-end lg:justify-between mb-8 sm:mb-10">
         <div className="flex flex-col md:flex-row md:items-center gap-4 md:gap-10 w-full lg:w-auto">
           <h2 className="text-2xl sm:text-3xl md:text-[36px] font-semibold text-gray-900 whitespace-nowrap">
             Flash Sales

@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import toast from "react-hot-toast";
 import { NavLink, useNavigate } from "react-router-dom";
 
-// Assuming you have these assets in your project
 // import eyeOpen from "./Assets/eye-open.svg";
 // import eyeClosed from "./Assets/eye-closed.svg";
 // import googleIcon from "./Assets/IconGoogle.png";
@@ -22,7 +21,6 @@ export default function Login() {
     let newErrors = {};
     let isValid = true;
 
-    // Validate Email
     if (!formData.email.trim()) {
       newErrors.email = "Email is required.";
       isValid = false;
@@ -31,7 +29,6 @@ export default function Login() {
       isValid = false;
     }
 
-    // Validate Password
     if (!formData.password.trim()) {
       newErrors.password = "Password is required.";
       isValid = false;
@@ -51,17 +48,15 @@ export default function Login() {
     e.preventDefault();
 
     if (validateForm()) {
-      // Retrieve user data from localStorage
       const storedUser = JSON.parse(localStorage.getItem("userAccount"));
 
-      // Basic authentication
       if (
         storedUser &&
         storedUser.email === formData.email &&
         storedUser.password === formData.password
       ) {
         toast.success("Logged in successfully!");
-        navigate("/home"); // Navigate to the home page or dashboard
+        navigate("/home");
       } else {
         toast.error("Invalid email or password.");
       }
@@ -71,68 +66,94 @@ export default function Login() {
   }
 
   return (
-    <div className="login flex items-center h-screen gap-[100px] px-20">
-      <div>
-        <img src="./iphone.png" alt="iPhone" />
+    <div className="login flex flex-col lg:flex-row items-center justify-center min-h-screen gap-10 lg:gap-20 px-6 sm:px-10 lg:px-20 py-10 bg-gray-50">
+      {/* IMAGE SECTION */}
+      <div className="w-full flex-1 lg:w-1/2 flex justify-center mb-10 lg:mb-0">
+        <img
+          src="./iphone.png"
+          alt="iPhone"
+          className="w-3/4 sm:w-2/3 lg:w-full"
+        />
       </div>
 
+      {/* FORM SECTION */}
       <form
         onSubmit={handleLogin}
-        className="flex flex-col shadow-2xl p-20 w-[50%]"
+        className="flex-1 flex flex-col shadow-xl rounded-lg p-6 sm:p-10 lg:p-16 w-full lg:w-1/2 bg-white"
       >
-        <div className="flex flex-col items-center">
-          <h1 className="font-semibold text-[36px]">Log in to your account</h1>
-          <p>Enter your details below</p>
+        {/* Header */}
+        <div className="flex flex-col items-center mb-8 text-center">
+          <h1 className="font-semibold text-2xl sm:text-3xl mb-2">
+            Log in to your account
+          </h1>
+          <p className="text-gray-600 text-sm sm:text-base">
+            Enter your details below
+          </p>
         </div>
-        <div className="flex flex-col mt-[48px] my-5">
-          <input
-            type="email"
-            name="email"
-            id="email"
-            placeholder="Email or Phone Number"
-            className={`h-[40px] p-1 mb-1 border-b-2 outline-none ${
-              errors.email ? "border-red-500" : "border-zinc-400 focus:border-blue-500"
-            }`}
-            value={formData.email}
-            onChange={updateFormData}
-          />
-          {errors.email && <p className="text-red-500 text-sm mb-3">{errors.email}</p>}
 
+        {/* Inputs */}
+        <div className="flex flex-col space-y-4 mb-6">
+          {/* Email */}
+          <div>
+            <input
+              type="email"
+              name="email"
+              placeholder="Email or Phone Number"
+              className={`h-10 w-full border-b-2 p-1 outline-none text-sm sm:text-base ${
+                errors.email
+                  ? "border-red-500"
+                  : "border-gray-300 focus:border-red-500"
+              }`}
+              value={formData.email}
+              onChange={updateFormData}
+            />
+            {errors.email && (
+              <p className="text-red-500 text-xs mt-1">{errors.email}</p>
+            )}
+          </div>
+
+          {/* Password */}
           <div className="relative">
             <input
               type={showPassword ? "text" : "password"}
               name="password"
-              id="password"
               placeholder="Password"
-              className={`h-[40px] p-1 mb-1 border-b-2 w-full outline-none pr-10 ${
-                errors.password ? "border-red-500" : "border-zinc-400 focus:border-blue-500"
+              className={`h-10 w-full border-b-2 p-1 outline-none pr-10 text-sm sm:text-base ${
+                errors.password
+                  ? "border-red-500"
+                  : "border-gray-300 focus:border-red-500"
               }`}
               value={formData.password}
               onChange={updateFormData}
             />
             <span
-              className="absolute right-2 top-2 cursor-pointer"
-              onClick={() => setShowPassword((prev) => !prev)}
+              className="absolute right-2 top-2.5 text-gray-500 cursor-pointer"
+              onClick={() => setShowPassword(!showPassword)}
             >
-              {/* <img src={showPassword ? eyeClosed : eyeOpen} alt="toggle password visibility" className="w-5 h-5" /> */}
+              {showPassword ? "🙈" : "👁️"}
             </span>
+            {errors.password && (
+              <p className="text-red-500 text-xs mt-1">{errors.password}</p>
+            )}
           </div>
-          {errors.password && <p className="text-red-500 text-sm mb-3">{errors.password}</p>}
         </div>
 
+        {/* Buttons */}
         <button
           type="submit"
-          className="bg-red-500 p-3 mb-4 text-white font-medium rounded hover:bg-red-600 transition-colors"
+          className="bg-red-500 text-white font-medium py-3 rounded-md hover:bg-red-600 transition-colors mb-4"
         >
           Log In
         </button>
-        <button className="flex items-center justify-center gap-4 border-2 border-zinc-300 p-3 rounded text-zinc-700 hover:bg-zinc-50 transition-colors">
-          {/* <img src={googleIcon} alt="Google icon" className="w-6 h-6" /> */}
+
+        <button className="flex items-center justify-center gap-3 border-2 border-gray-300 py-3 rounded-md text-gray-700 hover:bg-gray-50 transition-colors">
+          {/* <img src={googleIcon} alt="Google" className="w-5 h-5" /> */}
           <span>Log in with Google</span>
         </button>
 
-        <p className="text-center mt-6 text-sm text-zinc-600">
-          Don't have an account?{" "}
+        {/* Redirect */}
+        <p className="text-center mt-6 text-sm text-gray-600">
+          Don’t have an account?{" "}
           <NavLink to="/sign_up" className="text-red-500 hover:underline">
             Sign Up
           </NavLink>

@@ -1,103 +1,107 @@
 import React, { useState } from "react";
-import Modal from "./Modal"; // Make sure to import your Modal component
+import Modal from "./Modal";
 
 export default function EditProfile() {
   const [modalOpen, setModalOpen] = useState(false);
 
-  const handleOpenModal = () => {
-    // You can add validation logic here before opening the modal
-    setModalOpen(true);
-  };
-
-  const handleCloseModal = () => {
-    setModalOpen(false);
-  };
+  const handleOpenModal = () => setModalOpen(true);
+  const handleCloseModal = () => setModalOpen(false);
 
   return (
     <>
-      <section className="flex px-20 mt-[100px] ">
-        <div className="mx-auto shadow-xl p-15">
-          <h1 className="text-red-500 text-[20px] mb-[16px] font-medium">
+      <section className="flex justify-center items-start px-4 sm:px-10 lg:px-20 mt-20">
+        <div className="w-full max-w-3xl bg-white shadow-xl rounded-lg p-6 sm:p-10">
+          <h1 className="text-red-500 text-xl sm:text-2xl mb-6 font-semibold">
             Edit Profile
           </h1>
 
-          <div className="flex gap-[50px]">
-            <div>
-              <p>First Name</p>
+          {/* Name fields */}
+          <div className="flex flex-col sm:flex-row gap-6">
+            <div className="flex-1">
+              <p className="mb-1 text-sm font-medium text-gray-700">
+                First Name
+              </p>
               <input
                 type="text"
                 name="firstname"
                 id="firstname"
                 placeholder="Sanu"
-                className="w-[330px] p-3 bg-zinc-100 outline-none"
+                className="w-full p-3 bg-zinc-100 rounded outline-none border border-transparent focus:border-red-400 transition"
               />
             </div>
-            <div>
-              <p>Last Name</p>
+            <div className="flex-1">
+              <p className="mb-1 text-sm font-medium text-gray-700">
+                Last Name
+              </p>
               <input
                 type="text"
                 name="lastname"
                 id="lastname"
                 placeholder="Daniel"
-                className="w-[330px] p-3 bg-zinc-100 outline-none"
+                className="w-full p-3 bg-zinc-100 rounded outline-none border border-transparent focus:border-red-400 transition"
               />
             </div>
           </div>
-          <div className="flex gap-[50px] mt-[26px]">
-            <div>
-              <p>Email</p>
+
+          {/* Email and address */}
+          <div className="flex flex-col sm:flex-row gap-6 mt-6">
+            <div className="flex-1">
+              <p className="mb-1 text-sm font-medium text-gray-700">Email</p>
               <input
                 type="email"
                 name="email"
                 id="email"
                 placeholder="sanudaniel@gmail.com"
-                className="w-[330px] p-3 bg-zinc-100 outline-none"
+                className="w-full p-3 bg-zinc-100 rounded outline-none border border-transparent focus:border-red-400 transition"
               />
             </div>
-            <div>
-              <p>Address</p>
+            <div className="flex-1">
+              <p className="mb-1 text-sm font-medium text-gray-700">Address</p>
               <input
                 type="text"
                 name="address"
                 id="address"
-                placeholder="Kingston, 5236, United State"
-                className="w-[330px] p-3 bg-zinc-100 outline-none"
+                placeholder="Kingston, 5236, United States"
+                className="w-full p-3 bg-zinc-100 rounded outline-none border border-transparent focus:border-red-400 transition"
               />
             </div>
           </div>
-          <div className="flex gap-[50px] mt-[26px]">
-            <div className="flex flex-col gap-[16px]">
-              <p>Password Changes</p>
+
+          {/* Password section */}
+          <div className="mt-8">
+            <p className="mb-3 text-sm font-medium text-gray-700">
+              Password Changes
+            </p>
+            <div className="flex flex-col gap-4">
               <input
                 type="password"
-                name="password"
-                id="password"
+                name="currentPassword"
                 placeholder="Current Password"
-                className="w-[710px] p-3 bg-zinc-100 outline-none"
+                className="w-full p-3 bg-zinc-100 rounded outline-none border border-transparent focus:border-red-400 transition"
               />
               <input
                 type="password"
-                name="password"
-                id="password"
+                name="newPassword"
                 placeholder="New Password"
-                className="w-[710px] p-3 bg-zinc-100 outline-none"
+                className="w-full p-3 bg-zinc-100 rounded outline-none border border-transparent focus:border-red-400 transition"
               />
               <input
                 type="password"
-                name="password"
-                id="password"
-                placeholder="Confirm New Password "
-                className="w-[710px] p-3 bg-zinc-100 outline-none"
+                name="confirmPassword"
+                placeholder="Confirm New Password"
+                className="w-full p-3 bg-zinc-100 rounded outline-none border border-transparent focus:border-red-400 transition"
               />
             </div>
           </div>
-          <div className="flex gap-[10px] justify-center mt-[24px]">
-            <button className="cursor-pointer active:bg-zinc-100 p-4 px-7 rounded font-medium">
+
+          {/* Buttons */}
+          <div className="flex flex-col sm:flex-row justify-center gap-4 mt-8">
+            <button className="w-full sm:w-auto px-6 py-3 border border-zinc-300 rounded font-medium hover:bg-zinc-100 transition">
               Cancel
             </button>
             <button
-              className="bg-red-500 p-4 px-7 rounded font-medium text-white cursor-pointer active:bg-red-600"
-              onClick={handleOpenModal} // Add the onClick handler
+              className="w-full sm:w-auto px-6 py-3 bg-red-500 text-white rounded font-medium hover:bg-red-600 transition"
+              onClick={handleOpenModal}
             >
               Save Changes
             </button>
@@ -105,18 +109,20 @@ export default function EditProfile() {
         </div>
       </section>
 
-      {/* Conditionally render the modal */}
+      {/* Modal */}
       {modalOpen && (
         <Modal handleClose={handleCloseModal} title="Profile Updated">
           <div className="flex flex-col items-center text-center">
-            <h3>Changes Saved Successfully!</h3>
-            <p className="my-4">
+            <h3 className="text-lg font-semibold">
+              Changes Saved Successfully!
+            </h3>
+            <p className="my-4 text-gray-600">
               Your profile information has been updated. The changes will be
               reflected across your account.
             </p>
             <button
               onClick={handleCloseModal}
-              className="w-full p-3 bg-red-500 text-white rounded-md cursor-pointer active:bg-red-600"
+              className="w-full p-3 bg-red-500 text-white rounded-md hover:bg-red-600 transition"
             >
               OK
             </button>
