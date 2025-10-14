@@ -9,7 +9,7 @@ export default function EditProfile() {
 
   return (
     <>
-      <section className="flex justify-center items-start px-4 sm:px-10 lg:px-20 mt-20">
+      <section className="flex justify-center items-start px-4 sm:px-10 lg:px-20 mt-10">
         <div className="w-full max-w-3xl bg-white shadow-xl rounded-lg p-6 sm:p-10">
           <h1 className="text-red-500 text-xl sm:text-2xl mb-6 font-semibold">
             Edit Profile

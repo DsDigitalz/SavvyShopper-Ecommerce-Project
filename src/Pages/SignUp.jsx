@@ -74,9 +74,9 @@ export default function SignUp() {
   }
 
   return (
-    <div className="signup flex flex-col lg:flex-row items-center justify-center min-h-screen gap-10 lg:gap-20 px-6 sm:px-10 lg:px-20 py-10">
+    <div className="signup flex flex-col lg:flex-row items-center justify-center min-h-screen gap-5 lg:gap-20 px-6 sm:px-10 lg:px-20 py-10">
       {/* IMAGE SECTION */}
-      <div className="w-full flex-1 lg:w-1/2 flex justify-center mb-10 lg:mb-0">
+      <div className="w-full flex-1 lg:w-1/2 flex justify-center  lg:mb-0">
         <img
           src="./iphone.png"
           alt="Sign up illustration"
