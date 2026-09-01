@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import Modal from "./Modal";
 
 export default function EditProfile() {
@@ -9,120 +10,131 @@ export default function EditProfile() {
 
   return (
     <>
-      <section className="flex justify-center items-start px-4 sm:px-10 lg:px-20 mt-10">
-        <div className="w-full max-w-3xl bg-white shadow-xl rounded-lg p-6 sm:p-10">
-          <h1 className="text-red-500 text-xl sm:text-2xl mb-6 font-semibold">
+      <div className="pt-28 sm:pt-32 lg:pt-36 pb-20 px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto">
+        {/* Breadcrumb */}
+        <nav className="text-xs sm:text-sm text-zinc-500 mb-8 flex items-center gap-2">
+          <Link to="/home" className="hover:text-red-500 transition">
+            Home
+          </Link>
+          <span>/</span>
+          <span className="font-semibold text-gray-900">My Profile</span>
+        </nav>
+
+        <div className="bg-white shadow-sm border border-zinc-200 rounded-3xl p-6 sm:p-10">
+          <h1 className="text-2xl sm:text-3xl font-extrabold text-gray-900 mb-8 border-b border-zinc-100 pb-4 tracking-tight">
             Edit Profile
           </h1>
 
           {/* Name fields */}
-          <div className="flex flex-col sm:flex-row gap-6">
-            <div className="flex-1">
-              <p className="mb-1 text-sm font-medium text-gray-700">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            <div>
+              <label className="mb-2 block text-xs sm:text-sm font-semibold text-gray-700">
                 First Name
-              </p>
+              </label>
               <input
                 type="text"
                 name="firstname"
                 id="firstname"
-                placeholder="Sanu"
-                className="w-full p-3 bg-zinc-100 rounded outline-none border border-transparent focus:border-red-400 transition"
+                defaultValue="Sanu"
+                className="w-full p-3.5 bg-zinc-50 rounded-xl outline-none border border-zinc-200 focus:border-red-500 focus:bg-white text-xs sm:text-sm transition"
               />
             </div>
-            <div className="flex-1">
-              <p className="mb-1 text-sm font-medium text-gray-700">
+            <div>
+              <label className="mb-2 block text-xs sm:text-sm font-semibold text-gray-700">
                 Last Name
-              </p>
+              </label>
               <input
                 type="text"
                 name="lastname"
                 id="lastname"
-                placeholder="Daniel"
-                className="w-full p-3 bg-zinc-100 rounded outline-none border border-transparent focus:border-red-400 transition"
+                defaultValue="Daniel"
+                className="w-full p-3.5 bg-zinc-50 rounded-xl outline-none border border-zinc-200 focus:border-red-500 focus:bg-white text-xs sm:text-sm transition"
               />
             </div>
           </div>
 
           {/* Email and address */}
-          <div className="flex flex-col sm:flex-row gap-6 mt-6">
-            <div className="flex-1">
-              <p className="mb-1 text-sm font-medium text-gray-700">Email</p>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-6">
+            <div>
+              <label className="mb-2 block text-xs sm:text-sm font-semibold text-gray-700">Email</label>
               <input
                 type="email"
                 name="email"
                 id="email"
-                placeholder="sanudaniel@gmail.com"
-                className="w-full p-3 bg-zinc-100 rounded outline-none border border-transparent focus:border-red-400 transition"
+                defaultValue="sanudaniel@gmail.com"
+                className="w-full p-3.5 bg-zinc-50 rounded-xl outline-none border border-zinc-200 focus:border-red-500 focus:bg-white text-xs sm:text-sm transition"
               />
             </div>
-            <div className="flex-1">
-              <p className="mb-1 text-sm font-medium text-gray-700">Address</p>
+            <div>
+              <label className="mb-2 block text-xs sm:text-sm font-semibold text-gray-700">Address</label>
               <input
                 type="text"
                 name="address"
                 id="address"
-                placeholder="Kingston, 5236, United States"
-                className="w-full p-3 bg-zinc-100 rounded outline-none border border-transparent focus:border-red-400 transition"
+                defaultValue="Kingston, 5236, United States"
+                className="w-full p-3.5 bg-zinc-50 rounded-xl outline-none border border-zinc-200 focus:border-red-500 focus:bg-white text-xs sm:text-sm transition"
               />
             </div>
           </div>
 
           {/* Password section */}
-          <div className="mt-8">
-            <p className="mb-3 text-sm font-medium text-gray-700">
+          <div className="mt-8 border-t border-zinc-100 pt-6">
+            <h3 className="mb-4 text-base font-bold text-gray-900">
               Password Changes
-            </p>
+            </h3>
             <div className="flex flex-col gap-4">
               <input
                 type="password"
                 name="currentPassword"
                 placeholder="Current Password"
-                className="w-full p-3 bg-zinc-100 rounded outline-none border border-transparent focus:border-red-400 transition"
+                className="w-full p-3.5 bg-zinc-50 rounded-xl outline-none border border-zinc-200 focus:border-red-500 focus:bg-white text-xs sm:text-sm transition"
               />
               <input
                 type="password"
                 name="newPassword"
                 placeholder="New Password"
-                className="w-full p-3 bg-zinc-100 rounded outline-none border border-transparent focus:border-red-400 transition"
+                className="w-full p-3.5 bg-zinc-50 rounded-xl outline-none border border-zinc-200 focus:border-red-500 focus:bg-white text-xs sm:text-sm transition"
               />
               <input
                 type="password"
                 name="confirmPassword"
                 placeholder="Confirm New Password"
-                className="w-full p-3 bg-zinc-100 rounded outline-none border border-transparent focus:border-red-400 transition"
+                className="w-full p-3.5 bg-zinc-50 rounded-xl outline-none border border-zinc-200 focus:border-red-500 focus:bg-white text-xs sm:text-sm transition"
               />
             </div>
           </div>
 
           {/* Buttons */}
-          <div className="flex flex-col sm:flex-row justify-center gap-4 mt-8">
-            <button className="w-full sm:w-auto px-6 py-3 border border-zinc-300 rounded font-medium hover:bg-zinc-100 transition">
+          <div className="flex flex-col sm:flex-row justify-end gap-4 mt-8">
+            <button className="w-full sm:w-auto px-6 py-3 border border-zinc-300 rounded-xl font-bold text-xs sm:text-sm text-zinc-700 hover:bg-zinc-100 transition cursor-pointer">
               Cancel
             </button>
             <button
-              className="w-full sm:w-auto px-6 py-3 bg-red-500 text-white rounded font-medium hover:bg-red-600 transition"
+              className="w-full sm:w-auto px-8 py-3.5 bg-red-500 text-white rounded-xl font-bold text-xs sm:text-sm hover:bg-red-600 shadow-md transition cursor-pointer active:scale-98"
               onClick={handleOpenModal}
             >
               Save Changes
             </button>
           </div>
         </div>
-      </section>
+      </div>
 
       {/* Modal */}
       {modalOpen && (
         <Modal handleClose={handleCloseModal} title="Profile Updated">
-          <div className="flex flex-col items-center text-center">
-            <h3 className="text-lg font-semibold">
+          <div className="flex flex-col items-center text-center p-2">
+            <div className="w-14 h-14 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center text-2xl mb-3">
+              ✓
+            </div>
+            <h3 className="text-xl font-bold text-gray-900 mb-2">
               Changes Saved Successfully!
             </h3>
-            <p className="my-4 text-gray-600">
-              Your profile information has been updated. The changes will be
-              reflected across your account.
+            <p className="mb-6 text-xs sm:text-sm text-gray-600 leading-relaxed">
+              Your profile information has been updated. The changes will be reflected across your account.
             </p>
             <button
               onClick={handleCloseModal}
-              className="w-full p-3 bg-red-500 text-white rounded-md hover:bg-red-600 transition"
+              className="w-full p-3 bg-red-500 text-white rounded-xl font-bold hover:bg-red-600 transition text-sm cursor-pointer"
             >
               OK
             </button>

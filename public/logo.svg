@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" fill="none">
+  <defs>
+    <!-- Background Gradient -->
+    <linearGradient id="savvyshopper-grad" x1="20" y1="20" x2="180" y2="180" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#FF4D4D" />
+      <stop offset="50%" stop-color="#EF4444" />
+      <stop offset="100%" stop-color="#DC2626" />
+    </linearGradient>
+    
+    <!-- Subtle Inner Glow -->
+    <linearGradient id="handle-grad" x1="70" y1="25" x2="130" y2="80" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#FF6B6B" />
+      <stop offset="100%" stop-color="#E11D48" />
+    </linearGradient>
+
+    <!-- Shadow filter -->
+    <filter id="drop-shadow" x="-10%" y="-10%" width="130%" height="130%">
+      <feDropShadow dx="0" dy="8" stdDeviation="10" flood-color="#EF4444" flood-opacity="0.35" />
+    </filter>
+  </defs>
+
+  <!-- Container Box with Rounded Corners -->
+  <rect width="200" height="200" rx="44" fill="url(#savvyshopper-grad)" />
+
+  <!-- Inner Soft Pattern Accents -->
+  <circle cx="160" cy="40" r="60" fill="white" fill-opacity="0.08" />
+  <circle cx="30" cy="170" r="40" fill="black" fill-opacity="0.1" />
+
+  <!-- Shopping Bag Handle (Top Arch) -->
+  <path
+    d="M74 72V52C74 37.64 85.64 26 100 26C114.36 26 126 37.64 126 52V72"
+    stroke="white"
+    stroke-width="12"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  />
+
+  <!-- Shopping Bag Body -->
+  <path
+    d="M48 76C46.8954 76 46 76.8954 46 78L54.2 153.8C55.2 163.1 63.1 170 72.5 170H127.5C136.9 170 144.8 163.1 145.8 153.8L154 78C154 76.8954 153.105 76 152 76H48Z"
+    fill="white"
+    fill-opacity="0.2"
+  />
+
+  <!-- Stylized Modern 'S' Emblem (Center piece) -->
+  <path
+    d="M124 96C120 86 111 82 99 82C87 82 78 88 78 98C78 108 86 112 100 115C118 119 126 125 126 138C126 151 114 158 99 158C84 158 74 150 71 138"
+    stroke="white"
+    stroke-width="14"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  />
+
+  <!-- Tech / Spark Highlight -->
+  <path
+    d="M136 70L140 82L152 86L140 90L136 102L132 90L120 86L132 82L136 70Z"
+    fill="#FEF08A"
+  />
+</svg>

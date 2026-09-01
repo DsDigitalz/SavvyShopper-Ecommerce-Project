@@ -1,254 +1,76 @@
-import WishlistCard from "./WishlistCard";
-const products = [
-  {
-    id: 1,
-    name: "Gucci duffle bag",
-    image: "./bag.png",
-    price: 960,
-    originalPrice: 1160,
-    discount: "-35%",
-    cartIcon: "path/to/cart-icon.png",
-    deleteIcon: "path/to/delete-icon.png",
-  },
-  {
-    id: 2,
-    name: "Prada Saffiano leather tote",
-    image: "./prada-tote.png",
-    price: 2200,
-    originalPrice: 2800,
-    discount: "-21%",
-    cartIcon: "path/to/cart-icon.png",                 
-    deleteIcon: "path/to/delete-icon.png",
-  },
-  {
-    id: 3,
-    name: "Louis Vuitton Neverfull MM",
-    image: "./lv-neverfull.png",
-    price: 1500,
-    originalPrice: 1800,
-    discount: "-17%",
-    cartIcon: "path/to/cart-icon.png",
-    deleteIcon: "path/to/delete-icon.png",
-  },
-  {
-    id: 4,
-    name: "Chanel Classic Flap bag",
-    image: "./chanel-flap.png",
-    price: 6800,
-    originalPrice: 7500,
-    discount: "-9%",
-    cartIcon: "path/to/cart-icon.png",
-    deleteIcon: "path/to/delete-icon.png",
-  },
-  {
-    id: 5,
-    name: "Balenciaga Hourglass bag",
-    image: "./balenciaga-hourglass.png",
-    price: 1950,
-    originalPrice: 2300,
-    discount: "-15%",
-    cartIcon: "path/to/cart-icon.png",
-    deleteIcon: "path/to/delete-icon.png",
-  },
-  {
-    id: 6,
-    name: "Saint Laurent Lou camera bag",
-    image: "./yl-lou.png",
-    price: 1250,
-    originalPrice: 1450,
-    discount: "-14%",
-    cartIcon: "path/to/cart-icon.png",
-    deleteIcon: "path/to/delete-icon.png",
-  },
-  {
-    id: 7,
-    name: "Dior Book Tote small",
-    image: "./dior-tote.png",
-    price: 2700,
-    originalPrice: 3200,
-    discount: "-16%",
-    cartIcon: "path/to/cart-icon.png",
-    deleteIcon: "path/to/delete-icon.png",
-  },
-  {
-    id: 8,
-    name: "Fendi Peekaboo medium",
-    image: "./fendi-peekaboo.png",
-    price: 3400,
-    originalPrice: 3800,
-    discount: "-11%",
-    cartIcon: "path/to/cart-icon.png",
-    deleteIcon: "path/to/delete-icon.png",
-  },
-  {
-    id: 9,
-    name: "Bottega Veneta Cassette bag",
-    image: "./bottega-cassette.png",
-    price: 2200,
-    originalPrice: 2600,
-    discount: "-15%",
-    cartIcon: "path/to/cart-icon.png",
-    deleteIcon: "path/to/delete-icon.png",
-  },
-  {
-    id: 10,
-    name: "Celine Nano luggage",
-    image: "./celine-nano.png",
-    price: 2100,
-    originalPrice: 2400,
-    discount: "-13%",
-    cartIcon: "path/to/cart-icon.png",
-    deleteIcon: "path/to/delete-icon.png",
-  },
-  // Continuing with more products...
-  {
-    id: 11,
-    name: "Hermès Evelyne III 29",
-    image: "./hermes-evelyne.png",
-    price: 2500,
-    originalPrice: 2900,
-    discount: "-14%",
-    cartIcon: "path/to/cart-icon.png",
-    deleteIcon: "path/to/delete-icon.png",
-  },
-  {
-    id: 12,
-    name: "Givenchy Antigona small",
-    image: "./givenchy-antigona.png",
-    price: 1800,
-    originalPrice: 2100,
-    discount: "-14%",
-    cartIcon: "path/to/cart-icon.png",
-    deleteIcon: "path/to/delete-icon.png",
-  },
-  {
-    id: 13,
-    name: "Loewe Puzzle small",
-    image: "./loewe-puzzle.png",
-    price: 1900,
-    originalPrice: 2200,
-    discount: "-14%",
-    cartIcon: "path/to/cart-icon.png",
-    deleteIcon: "path/to/delete-icon.png",
-  },
-  {
-    id: 14,
-    name: "Valentino Rockstud shoulder bag",
-    image: "./valentino-rockstud.png",
-    price: 1500,
-    originalPrice: 1800,
-    discount: "-17%",
-    cartIcon: "path/to/cart-icon.png",
-    deleteIcon: "path/to/delete-icon.png",
-  },
-  {
-    id: 15,
-    name: "Miu Miu matelassé leather bag",
-    image: "./miumiu-matelasse.png",
-    price: 1600,
-    originalPrice: 1900,
-    discount: "-16%",
-    cartIcon: "path/to/cart-icon.png",
-    deleteIcon: "path/to/delete-icon.png",
-  },
-  // Adding more diverse items...
-  {
-    id: 16,
-    name: "Alexander McQueen skull clutch",
-    image: "./mcqueen-clutch.png",
-    price: 1200,
-    originalPrice: 1500,
-    discount: "-20%",
-    cartIcon: "path/to/cart-icon.png",
-    deleteIcon: "path/to/delete-icon.png",
-  },
-  {
-    id: 17,
-    name: "Versace Medusa shoulder bag",
-    image: "./versace-medusa.png",
-    price: 1300,
-    originalPrice: 1600,
-    discount: "-19%",
-    cartIcon: "path/to/cart-icon.png",
-    deleteIcon: "path/to/delete-icon.png",
-  },
-  {
-    id: 18,
-    name: "Burberry Banner bag",
-    image: "./burberry-banner.png",
-    price: 1400,
-    originalPrice: 1700,
-    discount: "-18%",
-    cartIcon: "path/to/cart-icon.png",
-    deleteIcon: "path/to/delete-icon.png",
-  },
-  {
-    id: 19,
-    name: "Chloé Tess day bag",
-    image: "./chloe-tess.png",
-    price: 1500,
-    originalPrice: 1800,
-    discount: "-17%",
-    cartIcon: "path/to/cart-icon.png",
-    deleteIcon: "path/to/delete-icon.png",
-  },
-  {
-    id: 20,
-    name: "Jimmy Choo Gemma clutch",
-    image: "./jimmychoo-gemma.png",
-    price: 900,
-    originalPrice: 1200,
-    discount: "-25%",
-    cartIcon: "path/to/cart-icon.png",
-    deleteIcon: "path/to/delete-icon.png",
-  },
-
-  {
-    id: 21,
-    name: "Louis Vuitton Palm Springs",
-    price: 2150,
-    originalPrice: 2450,
-    discount: "-12%",
-    image: "./backpacks/lv-palm-springs.png",
-  },
-  {
-    id: 22,
-    name: "Prada Re-Nylon backpack",
-    price: 1350,
-    originalPrice: 1650,
-    discount: "-18%",
-    image: "./backpacks/prada-re-nylon.png",
-  },
-  {
-    id: 23,
-    name: "Hermès H Buckle belt",
-    price: 850,
-    originalPrice: 1100,
-    discount: "-23%",
-    image: "./belts/hermes-h.png",
-  },
-  {
-    id: 24,
-    name: "Gucci GG reversible belt",
-    price: 450,
-    originalPrice: 650,
-    discount: "-31%",
-    image: "./belts/gucci-gg-reversible.png",
-  },
-];
+import React from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { FaHeart, FaTrash, FaShoppingCart } from "react-icons/fa";
+import { useWishlist } from "../context/WishlistContext";
+import { useCart } from "../context/CartContext";
+import ProductCard from "./ProductCard";
 
 export default function Wishlists() {
-  return (
-    <div className="wishlist pt-[56px] text-[20px] px-4 lg:px-20">
-      <div className="wishlists">
-        <h1 className="mb-[80px]">Wishlist</h1>
+  const { wishlist, removeFromWishlist, clearWishlist } = useWishlist();
+  const { addToCart } = useCart();
+  const navigate = useNavigate();
+
+  const handleMoveAllToCart = () => {
+    wishlist.forEach((item) => {
+      addToCart(item, 1);
+    });
+    clearWishlist();
+  };
+
+  if (wishlist.length === 0) {
+    return (
+      <div className="pt-28 sm:pt-32 lg:pt-36 pb-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto min-h-[60vh] flex flex-col items-center justify-center text-center">
+        <div className="bg-red-50 p-6 rounded-3xl text-red-500 text-5xl mb-6 shadow-inner">
+          <FaHeart />
+        </div>
+        <h2 className="text-2xl sm:text-3xl font-extrabold text-gray-900 mb-3 tracking-tight">
+          Your Wishlist is Empty
+        </h2>
+        <p className="text-zinc-500 max-w-md mb-8 text-sm sm:text-base leading-relaxed">
+          Save your favorite smartphones, gadgets, and tech accessories here to buy them later.
+        </p>
+        <Link
+          to="/shop"
+          className="bg-red-500 hover:bg-red-600 text-white font-bold py-3.5 px-8 rounded-xl shadow-md transition duration-200 cursor-pointer text-sm"
+        >
+          Explore Shop
+        </Link>
       </div>
-      <div className="wishlists lg:p-10  bg-zinc-100 rounded ">
-        <section className=" bg-white  lg:p-10 rounded grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-10 justify-items-center">
-          {products.map(function (product) {
-            return <WishlistCard cardDetails={product} />;
-          })}
-        </section>
+    );
+  }
+
+  return (
+    <div className="pt-28 sm:pt-32 lg:pt-36 pb-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+      {/* Breadcrumb */}
+      <nav className="text-xs sm:text-sm text-zinc-500 mb-8 flex items-center gap-2">
+        <Link to="/home" className="hover:text-red-500 transition">
+          Home
+        </Link>
+        <span>/</span>
+        <span className="font-semibold text-gray-900">Wishlist</span>
+      </nav>
+
+      {/* Header */}
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8">
+        <h1 className="text-2xl sm:text-3xl font-extrabold text-gray-900 tracking-tight">
+          Wishlist ({wishlist.length})
+        </h1>
+        <div className="flex gap-4">
+          <button
+            onClick={handleMoveAllToCart}
+            className="flex items-center gap-2 bg-zinc-900 hover:bg-red-500 text-white text-xs sm:text-sm font-bold py-3 px-6 rounded-xl shadow-md transition cursor-pointer active:scale-98"
+          >
+            <FaShoppingCart />
+            <span>Move All To Cart</span>
+          </button>
+        </div>
+      </div>
+
+      {/* Wishlist Grid */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+        {wishlist.map((product) => (
+          <ProductCard key={product.id} product={product} />
+        ))}
       </div>
     </div>
   );

@@ -1,20 +1,15 @@
 import React from "react";
-import Navbar from "../Components/Navbar";
 import { Outlet } from "react-router-dom";
-import Banner from "../Components/Banner";
 import Footer from "../Components/Footer";
-
 
 export default function AppLayout() {
   return (
-    <div>
-      {/* <Navbar /> */}
-      
-      
-      <main>
+    <div className="min-h-screen flex flex-col justify-between bg-white">
+      <main className="flex-grow">
         <Outlet />
       </main>
-      <Footer/>
+      <Footer />
     </div>
   );
 }
+

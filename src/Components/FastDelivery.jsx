@@ -26,26 +26,26 @@ const servicesData = [
 
 export default function FastDelivery() {
   return (
-    <section className="max-w-7xl mx-auto mt-20 px-6 sm:px-10 lg:px-16">
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-12 sm:gap-16 lg:gap-20 justify-items-center">
+    <section className="max-w-7xl mx-auto py-12 sm:py-16 px-4 sm:px-6 lg:px-8">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 sm:gap-10 lg:gap-12 justify-items-center">
         {servicesData.map((service) => (
           <article
             key={service.id}
-            className="flex flex-col items-center text-center bg-transparent w-full max-w-[280px] sm:max-w-[260px] gap-5"
+            className="flex flex-col items-center text-center bg-white p-6 sm:p-8 rounded-2xl border border-zinc-200/80 shadow-xs hover:shadow-md transition-all duration-300 w-full max-w-sm gap-4"
           >
-            <div className="flex justify-center">
+            <div className="flex justify-center p-3 bg-zinc-50 rounded-2xl">
               <img
                 src={service.icon}
                 alt={`${service.title} icon`}
-                className="w-16 sm:w-20 object-contain"
+                className="w-14 sm:w-16 h-14 sm:h-16 object-contain"
               />
             </div>
 
-            <div className="flex flex-col items-center gap-2">
-              <h3 className="text-lg sm:text-xl font-semibold leading-snug">
+            <div className="flex flex-col items-center gap-1.5">
+              <h3 className="text-base sm:text-lg font-bold text-gray-900 leading-snug">
                 {service.title}
               </h3>
-              <p className="text-sm sm:text-base text-gray-600">
+              <p className="text-xs sm:text-sm text-gray-500">
                 {service.description}
               </p>
             </div>

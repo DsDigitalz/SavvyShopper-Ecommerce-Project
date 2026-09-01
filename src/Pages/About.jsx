@@ -7,12 +7,11 @@ import Footer from "../Components/Footer";
 
 const About = () => {
   return (
-    <div>
+    <div className="w-full bg-white">
       <OurStory />
       <Sellers />
       <Staff />
-      <FastDelivery/>
-      {/* <Footer/> */}
+      <FastDelivery />
     </div>
   );
 };

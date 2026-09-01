@@ -12,17 +12,14 @@ import Loader from "../Components/Loader";
 
 const Home = () => {
   return (
-    <div>
-      {/* <Loader /> */}
+    <div className="w-full bg-white">
       <Banner />
       <FlashSales />
       <Categories />
       <BestProducts />
       <BannerTwo />
-      {/* <OurProducts /> */}
       <NewArrival />
       <FastDelivery />
-      {/* <Footer /> */}
     </div>
   );
 };

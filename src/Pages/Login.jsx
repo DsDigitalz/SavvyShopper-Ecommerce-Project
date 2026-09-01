@@ -66,99 +66,111 @@ export default function Login() {
   }
 
   return (
-    <div className="login flex flex-col lg:flex-row items-center justify-center min-h-screen  gap-5 lg:gap-20 px-6 sm:px-10 lg:px-20 py-10 bg-gray-50">
-      {/* IMAGE SECTION */}
-      <div className="w-full flex-1 lg:w-1/2 flex justify-center  lg:mb-0">
-        <img
-          src="./iphone.png"
-          alt="iPhone"
-          className="w-3/4 sm:w-2/3 lg:w-full"
-        />
-      </div>
-
-      {/* FORM SECTION */}
-      <form
-        onSubmit={handleLogin}
-        className="flex-1 flex flex-col shadow-xl rounded-lg p-6 sm:p-10 lg:p-16 w-full lg:w-1/2 bg-white"
-      >
-        {/* Header */}
-        <div className="flex flex-col items-center mb-8 text-center">
-          <h1 className="font-semibold text-2xl sm:text-3xl mb-2">
-            Log in to your account
-          </h1>
-          <p className="text-gray-600 text-sm sm:text-base">
-            Enter your details below
-          </p>
-        </div>
-
-        {/* Inputs */}
-        <div className="flex flex-col space-y-4 mb-6">
-          {/* Email */}
-          <div>
-            <input
-              type="email"
-              name="email"
-              placeholder="Email or Phone Number"
-              className={`h-10 w-full border-b-2 p-1 outline-none text-sm sm:text-base ${
-                errors.email
-                  ? "border-red-500"
-                  : "border-gray-300 focus:border-red-500"
-              }`}
-              value={formData.email}
-              onChange={updateFormData}
+    <div className="pt-28 sm:pt-32 lg:pt-36 pb-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto min-h-[85vh] flex items-center justify-center">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-center w-full">
+        {/* IMAGE SECTION (6 cols) */}
+        <div className="hidden lg:flex lg:col-span-6 justify-center">
+          <div className="bg-zinc-50 border border-zinc-200/80 rounded-3xl p-10 flex items-center justify-center w-full max-w-lg shadow-sm">
+            <img
+              src="/iphone.png"
+              alt="iPhone"
+              className="max-h-[420px] object-contain hover:scale-105 transition duration-300"
+              onError={(e) => {
+                e.target.src = "/bag.png";
+              }}
             />
-            {errors.email && (
-              <p className="text-red-500 text-xs mt-1">{errors.email}</p>
-            )}
-          </div>
-
-          {/* Password */}
-          <div className="relative">
-            <input
-              type={showPassword ? "text" : "password"}
-              name="password"
-              placeholder="Password"
-              className={`h-10 w-full border-b-2 p-1 outline-none pr-10 text-sm sm:text-base ${
-                errors.password
-                  ? "border-red-500"
-                  : "border-gray-300 focus:border-red-500"
-              }`}
-              value={formData.password}
-              onChange={updateFormData}
-            />
-            <span
-              className="absolute right-2 top-2.5 text-gray-500 cursor-pointer"
-              onClick={() => setShowPassword(!showPassword)}
-            >
-              {showPassword ? "🙈" : "👁️"}
-            </span>
-            {errors.password && (
-              <p className="text-red-500 text-xs mt-1">{errors.password}</p>
-            )}
           </div>
         </div>
 
-        {/* Buttons */}
-        <button
-          type="submit"
-          className="bg-red-500 text-white font-medium py-3 rounded-md hover:bg-red-600 transition-colors mb-4"
+        {/* FORM SECTION (6 cols) */}
+        <form
+          onSubmit={handleLogin}
+          className="lg:col-span-6 flex flex-col bg-white border border-zinc-200 shadow-sm rounded-3xl p-6 sm:p-12 w-full max-w-lg mx-auto"
         >
-          Log In
-        </button>
+          {/* Header */}
+          <div className="mb-8 text-left">
+            <div className="flex items-center text-red-500 gap-2 mb-2">
+              <div className="bg-red-500 w-3.5 h-7 rounded-[3px]" />
+              <p className="font-bold text-xs uppercase tracking-wider">Welcome Back</p>
+            </div>
+            <h1 className="text-2xl sm:text-3xl font-extrabold text-gray-900 mb-2 tracking-tight">
+              Log in to SavvyShopper
+            </h1>
+            <p className="text-gray-500 text-xs sm:text-sm">
+              Enter your credentials to access your account & orders
+            </p>
+          </div>
 
-        <button className="flex items-center justify-center gap-3 border-2 border-gray-300 py-3 rounded-md text-gray-700 hover:bg-gray-50 transition-colors">
-          {/* <img src={googleIcon} alt="Google" className="w-5 h-5" /> */}
-          <span>Log in with Google</span>
-        </button>
+          {/* Inputs */}
+          <div className="flex flex-col space-y-4 mb-6">
+            {/* Email */}
+            <div>
+              <label className="text-xs font-semibold text-gray-700 block mb-1.5">Email Address</label>
+              <input
+                type="email"
+                name="email"
+                placeholder="name@example.com"
+                className={`w-full p-3.5 bg-zinc-50 rounded-xl outline-none text-xs sm:text-sm border transition ${
+                  errors.email
+                    ? "border-red-500 focus:ring-2 focus:ring-red-500"
+                    : "border-zinc-200 focus:border-red-500 focus:bg-white"
+                }`}
+                value={formData.email}
+                onChange={updateFormData}
+              />
+              {errors.email && (
+                <p className="text-red-500 text-xs mt-1 font-medium">{errors.email}</p>
+              )}
+            </div>
 
-        {/* Redirect */}
-        <p className="text-center mt-6 text-sm text-gray-600">
-          Don’t have an account?{" "}
-          <NavLink to="/sign_up" className="text-red-500 hover:underline">
-            Sign Up
-          </NavLink>
-        </p>
-      </form>
+            {/* Password */}
+            <div>
+              <label className="text-xs font-semibold text-gray-700 block mb-1.5">Password</label>
+              <div className="relative">
+                <input
+                  type={showPassword ? "text" : "password"}
+                  name="password"
+                  placeholder="Enter your password"
+                  className={`w-full p-3.5 bg-zinc-50 rounded-xl outline-none pr-10 text-xs sm:text-sm border transition ${
+                    errors.password
+                      ? "border-red-500 focus:ring-2 focus:ring-red-500"
+                      : "border-zinc-200 focus:border-red-500 focus:bg-white"
+                  }`}
+                  value={formData.password}
+                  onChange={updateFormData}
+                />
+                <button
+                  type="button"
+                  aria-label="Toggle password visibility"
+                  className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-700 cursor-pointer text-sm"
+                  onClick={() => setShowPassword(!showPassword)}
+                >
+                  {showPassword ? "🙈" : "👁️"}
+                </button>
+              </div>
+              {errors.password && (
+                <p className="text-red-500 text-xs mt-1 font-medium">{errors.password}</p>
+              )}
+            </div>
+          </div>
+
+          {/* Buttons */}
+          <button
+            type="submit"
+            className="w-full bg-red-500 hover:bg-red-600 text-white font-bold py-3.5 rounded-xl shadow-md transition-all duration-200 mb-4 cursor-pointer text-sm active:scale-98"
+          >
+            Log In
+          </button>
+
+          {/* Redirect */}
+          <p className="text-center mt-4 text-xs sm:text-sm text-gray-500">
+            Don't have an account?{" "}
+            <NavLink to="/sign_up" className="text-red-500 font-bold hover:underline">
+              Sign Up
+            </NavLink>
+          </p>
+        </form>
+      </div>
     </div>
   );
 }
